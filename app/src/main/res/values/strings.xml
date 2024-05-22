@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FishSnap</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welcome to FishSnap!</string>
+    <string name="welcome_description">Our app focus is to educate the public and help fisheries practitioners and create an interactive program that can be easily accessed by everyone.</string>
+    <string name="btn_signIn">Sign In</string>
+    <string name="text_validation">Don’t have account? <u><b>Sign Up</b></u></string>
+    <string name="sign_up">Sign Up</string>
+    <string name="made_by">Made by</string>
+    <string name="capstone_team_c241_ps013">Capstone Team C241-PS013</string>
+    <string name="logo">Logo</string>
+    <string name="text_login">Welcome Back!</string>
+</resources>
