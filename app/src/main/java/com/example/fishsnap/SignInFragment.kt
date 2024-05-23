@@ -1,13 +1,13 @@
 package com.example.fishsnap
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.fishsnap.databinding.FragmentSignInBinding
+
 
 class SignInFragment : Fragment() {
     private var _binding: FragmentSignInBinding? = null
@@ -24,11 +24,9 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set status bar color
-        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.satinBlue)
-
-        // Set up other UI components and listeners here
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {
