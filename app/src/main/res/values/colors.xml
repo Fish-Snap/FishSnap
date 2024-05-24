@@ -10,4 +10,5 @@
     <color name="grey">#C0C0C0</color>
     <color name="lightRed">#DC3545</color>
     <color name="cream">#F3F3F3</color>
+    <color name="warning_color">#DC3545</color>
 </resources>

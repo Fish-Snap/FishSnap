@@ -11,4 +11,6 @@
     <string name="capstone_team_c241_ps013">Capstone Team C241-PS013</string>
     <string name="logo">Logo</string>
     <string name="text_login">Welcome Back!</string>
+    <string name="error_email">Email must be use valid format</string>
+    <string name="error_username">Username must be only 1 word</string>
 </resources>
