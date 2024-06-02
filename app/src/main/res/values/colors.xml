@@ -13,4 +13,5 @@
     <color name="warning_color">#DC3545</color>
     <color name="darkGreen">#005F82</color>
     <color name="shadeGrey">#ABABAD</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

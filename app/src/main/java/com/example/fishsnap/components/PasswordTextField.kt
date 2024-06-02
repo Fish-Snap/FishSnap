@@ -1,7 +1,6 @@
 package com.example.fishsnap.components
 
 import android.content.Context
-import android.graphics.Color
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
@@ -24,10 +23,9 @@ class PasswordTextField @JvmOverloads constructor(context: Context, attrs: Attri
                     parent.errorIconDrawable = null
                     if (!s.isNullOrEmpty() && s.length < 8) {
                         parent.error = context.getString(R.string.error_password)
-                        parent.boxStrokeColor = context.getColor(R.color.sageGreen)
                     } else {
                         parent.error = null
-                        parent.boxStrokeColor = Color.TRANSPARENT
+                        parent.boxStrokeColor = context.getColor(R.color.transparent)
                     }
                 }
             }
