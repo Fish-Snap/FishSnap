@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id="@+id/homeFragment"
+    android:icon="@drawable/icon_home"
+    android:iconTint="@color/shadeGrey"
+    android:title="@string/menu_home" />
+
+    <item
+        android:id="@+id/detectionFragment"
+        android:icon="@drawable/icon_detection"
+        android:iconTint="@color/shadeGrey"
+        android:title="@string/menu_detection" />
+
+    <item
+        android:id="@+id/historyFragment"
+        android:icon="@drawable/icon_history"
+        android:iconTint="@color/shadeGrey"
+        android:title="@string/menu_history" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/icon_profile"
+        android:iconTint="@color/shadeGrey"
+        android:title="@string/menu_profile" />
+
+</menu>

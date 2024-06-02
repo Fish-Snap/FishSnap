@@ -13,4 +13,8 @@
     <string name="text_login">Welcome Back!</string>
     <string name="error_email">Email must be use valid format</string>
     <string name="error_username">Username must be only 1 word</string>
+    <string name="menu_home">Beranda</string>
+    <string name="menu_detection">Deteksi</string>
+    <string name="menu_history">Riwayat</string>
+    <string name="menu_profile">Profil</string>
 </resources>

@@ -11,4 +11,6 @@
     <color name="lightRed">#DC3545</color>
     <color name="cream">#F3F3F3</color>
     <color name="warning_color">#DC3545</color>
+    <color name="darkGreen">#005F82</color>
+    <color name="shadeGrey">#ABABAD</color>
 </resources>
