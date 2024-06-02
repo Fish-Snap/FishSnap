@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.fishsnap"
-        minSdk = 26
+        minSdk = 24 // tidak direkomendasikan 26 karna masih banyak yang make
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -37,6 +37,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -57,4 +58,15 @@ dependencies {
 
     // SplashScreen
     implementation (libs.androidx.core.splashscreen)
+
+    // Ucrop
+    implementation(libs.ucrop)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Glide
+    implementation (libs.glide)
+
 }

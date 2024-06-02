@@ -22,4 +22,9 @@
     <string name="enter_your_account_to_login">Enter your account to login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
+    <string name="detection_image">Deteksi Gambar</string>
+    <string name="image_preview">Image Preview</string>
+    <string name="btn_analyze">Analisis</string>
+    <string name="btn_camera">Kamera</string>
+    <string name="btn_gallery">Galeri</string>
 </resources>

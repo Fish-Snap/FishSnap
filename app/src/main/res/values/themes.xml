@@ -16,5 +16,12 @@
         <item name="android:paddingHorizontal">16dp</item>
     </style>
 
+    <style name="ToolbarTitle" parent="TextAppearance.Material3.ActionBar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/satinBlue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="Theme.FishSnap" parent="Base.Theme.FishSnap" />
 </resources>

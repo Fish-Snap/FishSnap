@@ -47,7 +47,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/detectionFragment"
-        android:name="com.example.fishsnap.DetectionFragment"
+        android:name="com.example.fishsnap.ui.detection.DetectionFragment"
         android:label="fragment_detection"
         tools:layout="@layout/fragment_detection" />
     <fragment
