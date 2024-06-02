@@ -190,13 +190,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_password"
                     tools:alpha="100">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.example.fishsnap.components.PasswordTextField
                         android:id="@+id/passwordEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPassword"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

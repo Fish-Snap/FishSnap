@@ -17,4 +17,9 @@
     <string name="menu_detection">Deteksi</string>
     <string name="menu_history">Riwayat</string>
     <string name="menu_profile">Profil</string>
+    <string name="error_password">Password harus melebihi 8 karakter</string>
+    <string name="background_image">Background Image</string>
+    <string name="enter_your_account_to_login">Enter your account to login</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
 </resources>

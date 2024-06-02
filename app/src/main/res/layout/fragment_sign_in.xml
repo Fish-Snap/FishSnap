@@ -11,6 +11,7 @@
         android:id="@+id/iv_background"
         android:layout_width="match_parent"
         android:layout_height="360dp"
+        android:contentDescription="@string/background_image"
         android:scaleType="fitXY"
         android:src="@drawable/image"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +30,8 @@
         android:importantForAccessibility="no"
         android:src="@drawable/arrow_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,10 +43,10 @@
         tools:layout_editor_absoluteX="0dp">
 
         <ScrollView
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp"
             android:scrollbars="none">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,10 +59,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
                     android:text="@string/text_login"
                     android:textColor="@color/satinBlue"
                     android:textSize="30sp"
-                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -70,9 +72,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Enter your account to login"
-                    android:textSize="18sp"
                     android:gravity="center"
+                    android:text="@string/enter_your_account_to_login"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_welcomeBack" />
@@ -83,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Username"
+                    android:text="@string/username"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_note" />
@@ -91,38 +93,38 @@
                 <com.example.fishsnap.components.usernameTextField
                     android:id="@+id/edt_username"
                     style="@style/CustomTextField"
-                    android:inputType="text"
                     android:backgroundTint="@color/cream"
+                    android:inputType="text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_username"
                     tools:alpha="100"
-                    />
+                    tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
 
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:id="@+id/edt_username"-->
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:boxBackgroundColor="@color/cream"-->
-<!--                    app:boxCornerRadiusBottomEnd="10dp"-->
-<!--                    app:boxCornerRadiusBottomStart="10dp"-->
-<!--                    app:boxCornerRadiusTopEnd="10dp"-->
-<!--                    app:boxCornerRadiusTopStart="10dp"-->
-<!--                    app:boxStrokeColor="@android:color/transparent"-->
-<!--                    app:boxStrokeWidth="0dp"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/tv_username"-->
-<!--                    tools:alpha="100">-->
+                <!--                <com.google.android.material.textfield.TextInputLayout-->
+                <!--                    android:id="@+id/edt_username"-->
+                <!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    app:boxBackgroundColor="@color/cream"-->
+                <!--                    app:boxCornerRadiusBottomEnd="10dp"-->
+                <!--                    app:boxCornerRadiusBottomStart="10dp"-->
+                <!--                    app:boxCornerRadiusTopEnd="10dp"-->
+                <!--                    app:boxCornerRadiusTopStart="10dp"-->
+                <!--                    app:boxStrokeColor="@android:color/transparent"-->
+                <!--                    app:boxStrokeWidth="0dp"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/tv_username"-->
+                <!--                    tools:alpha="100">-->
 
-<!--                    <com.google.android.material.textfield.TextInputEditText-->
-<!--                        android:id="@+id/emailEditText"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:inputType="text"-->
-<!--                        tools:ignore="SpeakableTextPresentCheck" />-->
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
+                <!--                    <com.google.android.material.textfield.TextInputEditText-->
+                <!--                        android:id="@+id/emailEditText"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:inputType="text"-->
+                <!--                        tools:ignore="SpeakableTextPresentCheck" />-->
+                <!--                </com.google.android.material.textfield.TextInputLayout>-->
 
                 <TextView
                     android:id="@+id/tv_password"
@@ -130,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Password"
+                    android:text="@string/password"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/edt_username" />
@@ -153,13 +155,12 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_password"
                     tools:alpha="100">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <com.example.fishsnap.components.PasswordTextField
                         android:id="@+id/passwordEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPassword"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck,VisualLintTextFieldSize" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
