@@ -27,4 +27,5 @@
     <string name="btn_analyze">Analisis</string>
     <string name="btn_camera">Kamera</string>
     <string name="btn_gallery">Galeri</string>
+    <string name="error_confirm_password">Confirm password harus sama dengan password</string>
 </resources>

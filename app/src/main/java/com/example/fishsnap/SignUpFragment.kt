@@ -11,6 +11,8 @@ import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.findNavController
+import com.example.fishsnap.components.ConfirmPasswordTextField
+import com.example.fishsnap.components.PasswordTextField
 import com.example.fishsnap.databinding.FragmentSignUpBinding
 
 class SignUpFragment : Fragment() {
@@ -49,6 +51,16 @@ class SignUpFragment : Fragment() {
         binding.btnSignUp.setOnClickListener {
             findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
         }
+
+        // Initialize the custom views
+        val passwordEditText = binding.passwordTextInputLayout.findViewById<PasswordTextField>(R.id.passwordEditText)
+        val confirmPasswordEditText = binding.confirmPasswordTextInputLayout.findViewById<ConfirmPasswordTextField>(R.id.confirmPasswordEditText)
+
+        // Set the PasswordTextField for ConfirmPasswordTextField
+        confirmPasswordEditText.passwordTextField = passwordEditText
+        
+        // TO Do
+        // add validate if button sign up pressed
     }
 
     private fun Fragment.resetStatusBarColor() {
