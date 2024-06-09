@@ -44,7 +44,18 @@
         android:id="@+id/homeFragment"
         android:name="com.example.fishsnap.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFishFragment"
+            app:destination="@id/detailFishFragment" >
+            <argument
+                android:name="imageUrl"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_homeFragment_to_detailNewsFragment"
+            app:destination="@id/detailNewsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detectionFragment"
         android:name="com.example.fishsnap.ui.detection.DetectionFragment"
@@ -100,4 +111,15 @@
             android:id="@+id/action_profileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/detailFishFragment"
+        android:name="com.example.fishsnap.DetailFishFragment"
+        android:label="fragment_detail_fish"
+        tools:layout="@layout/fragment_detail_fish" />
+    <fragment
+        android:id="@+id/detailNewsFragment"
+        android:name="com.example.fishsnap.DetailNewsFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail_news" />
+
 </navigation>

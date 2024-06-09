@@ -24,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:background="@color/white"
         app:labelVisibilityMode="labeled"
         app:itemActiveIndicatorStyle="@style/ThemeOverlay.Material3.BottomAppBar"
         app:itemIconTint="@drawable/bottom_nav_selector"

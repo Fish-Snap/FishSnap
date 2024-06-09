@@ -5,55 +5,116 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.fishsnap.adapter.carouselAdapter.CarouselAdapter
+import com.example.fishsnap.adapter.newsAdapter.NewsAdapter
+import com.example.fishsnap.data.dummy.DummyItemsNews
+import com.example.fishsnap.databinding.FragmentHomeBinding
+import com.google.android.material.carousel.CarouselLayoutManager
+import com.google.android.material.carousel.CarouselSnapHelper
+import com.google.android.material.carousel.HeroCarouselStrategy
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var carouselRecyclerView: RecyclerView
+    private lateinit var newsAdapter: NewsAdapter
+    private lateinit var newsList: MutableList<DummyItemsNews>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        newsList = getDummyNewsItems()
+        newsAdapter = NewsAdapter(requireContext(), newsList)
+        
+        setupCarouselRecyclerView()
+        setupNewsRecyclerView()
+    }
+
+    private fun setupNewsRecyclerView() {
+        val staggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        binding.recyclerNews.layoutManager = staggeredGridLayoutManager
+        binding.recyclerNews.adapter = newsAdapter
+    }
+
+    private fun setupCarouselRecyclerView() {
+        carouselRecyclerView = binding.carouselRv
+        val carouselLayoutManager = CarouselLayoutManager(HeroCarouselStrategy())
+        carouselRecyclerView.layoutManager = carouselLayoutManager
+        CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
+        carouselRecyclerView.adapter = CarouselAdapter(images = getImages()) { imageUrl ->
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFishFragment(
+                imageUrl
+            )
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun getImages(): List<String> {
+        return listOf(
+            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
+            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
+            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
+            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
+            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
+            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
+            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
+        )
+    }
+
+    private fun getDummyNewsItems(): MutableList<DummyItemsNews> {
+        return mutableListOf(
+            DummyItemsNews(
+                title = "Title 1",
+                description = "Description 1",
+                author = "Author 1",
+                date = "Date 1",
+                imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
+            ),
+            DummyItemsNews(
+                title = "Title 2",
+                description = "Description 2",
+                author = "Author 2",
+                date = "Date 2",
+                imageUrl = "https://i.pinimg.com/564x/06/6f/b2/066fb2bd6a2f623a340239ed25db389d.jpg"
+            ),
+            DummyItemsNews(
+                title = "Title 3",
+                description = "Description 3",
+                author = "Author 3",
+                date = "Date 3",
+                imageUrl = "https://i.pinimg.com/564x/aa/48/fe/aa48fe1ed1162094d329a1cbe720bf8c.jpg"
+            ),
+            DummyItemsNews(
+                title = "Title 4",
+                description = "Description 4",
+                author = "Author 4",
+                date = "Date 4",
+                imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
+            ),
+            DummyItemsNews(
+                title = "Title 5",
+                description = "Description 5",
+                author = "Author 5",
+                date = "Date 5",
+                imageUrl = "https://i.pinimg.com/564x/95/68/6a/95686a79fda78c1d70ca6bbc09587977.jpg"
+            ),
+            DummyItemsNews(
+                title = "Title 6",
+                description = "Description 5",
+                author = "Author 5",
+                date = "Date 5",
+                imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
+            ),
+        )
     }
 }
