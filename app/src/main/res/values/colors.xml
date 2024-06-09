@@ -14,4 +14,5 @@
     <color name="darkGreen">#005F82</color>
     <color name="shadeGrey">#ABABAD</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="success">#4CAF50</color>
 </resources>

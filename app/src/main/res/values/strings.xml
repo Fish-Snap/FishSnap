@@ -28,4 +28,21 @@
     <string name="btn_camera">Kamera</string>
     <string name="btn_gallery">Galeri</string>
     <string name="error_confirm_password">Confirm password harus sama dengan password</string>
+    <string name="btn_logout">Keluar</string>
+    <string name="btn_ubah_kata_sandi">Ubah Kata Sandi</string>
+    <string name="btn_tentang_kami">Tentang Kami</string>
+    <string name="btn_syarat_dan_ketentuan">Syarat dan Ketentuan</string>
+    <string name="txt_profile">Personal Info</string>
+    <string name="txt_username">Username</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="btn_change_password">Change Password</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_new_password">New Password</string>
+    <string name="txt_confirm_password">Confirm Password</string>
+    <string name="tf_useremail_gmail_com">UserEmail@gmail.com</string>
+    <string name="logout_tidak">Tidak</string>
+    <string name="logout_ya">Ya</string>
+    <string name="txt_logout">Logout</string>
+    <string name="anda_yakin_ingin_keluar">Anda yakin ingin keluar ?</string>
 </resources>
