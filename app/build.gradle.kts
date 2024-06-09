@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id ("androidx.navigation.safeargs")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -16,6 +17,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+//        buildConfigField("String", "BASE_URL", "\"https://.../\"")
     }
 
     buildTypes {
@@ -72,4 +74,14 @@ dependencies {
     // Lottie files
     implementation(libs.lottie)
 
+    // GSON JSON Library
+    implementation(libs.converter.gson)
+
+    // Retrofit & OkHttp Logging Interceptor
+    implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
+
+    // ViewModel + LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 }
