@@ -30,7 +30,7 @@ class ChangePasswordFragment : Fragment() {
         val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val userName = sharedPreferences.getString("USER_USERNAME", "Username")
         val email = sharedPreferences.getString("USER_EMAIL", "Email")
-        
+
         binding.usernameTextInputLayout.setText(userName)
         binding.emailEditTextLayout.setText(email)
 
