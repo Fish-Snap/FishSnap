@@ -1,12 +1,16 @@
 package com.example.fishsnap.ui.profile
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.findNavController
 import com.example.fishsnap.R
 import com.example.fishsnap.databinding.DialogLogoutBinding
@@ -16,10 +20,15 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+       updateStatusBarColor()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -75,8 +84,21 @@ class ProfileFragment : Fragment() {
         dialog.show()
     }
 
+    override fun onResume() {
+        super.onResume()
+        updateStatusBarColor()
+    }
+
+    private fun updateStatusBarColor() {
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.darkGreen)
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = false
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        activity?.window?.statusBarColor = Color.TRANSPARENT
+        WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = true
         _binding = null
     }
 }
