@@ -45,4 +45,6 @@
     <string name="logout_ya">Ya</string>
     <string name="txt_logout">Logout</string>
     <string name="anda_yakin_ingin_keluar">Anda yakin ingin keluar ?</string>
+    <string name="btn_sign_up">Sign Up</string>
+    <string name="txt_create_an_account">Create an account</string>
 </resources>

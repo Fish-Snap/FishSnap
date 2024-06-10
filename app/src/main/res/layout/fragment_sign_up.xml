@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/satinBlue"
-    tools:context=".SignUpFragment">
+    tools:context=".ui.signup.SignUpFragment">
 
     <ImageView
         android:id="@+id/iv_background"
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="Create an account"
+                    android:text="@string/txt_create_an_account"
                     android:textColor="@color/satinBlue"
                     android:textSize="30sp"
                     android:gravity="center"
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Username"
+                    android:text="@string/txt_username"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_signUp" />
@@ -87,38 +87,13 @@
                     tools:alpha="100"
                     />
 
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:id="@+id/usernameTextInputLayout"-->
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:boxBackgroundColor="@color/cream"-->
-<!--                    app:boxCornerRadiusBottomEnd="10dp"-->
-<!--                    app:boxCornerRadiusBottomStart="10dp"-->
-<!--                    app:boxCornerRadiusTopEnd="10dp"-->
-<!--                    app:boxCornerRadiusTopStart="10dp"-->
-<!--                    app:boxStrokeColor="@android:color/transparent"-->
-<!--                    app:boxStrokeWidth="0dp"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/tv_username"-->
-<!--                    tools:alpha="100">-->
-
-<!--                    <com.google.android.material.textfield.TextInputEditText-->
-<!--                        android:id="@+id/usernameEditText"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:inputType="text"-->
-<!--                        tools:ignore="SpeakableTextPresentCheck" />-->
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
-
                 <TextView
                     android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Email"
+                    android:text="@string/txt_email"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/usernameTextInputLayout"
@@ -135,39 +110,13 @@
                     tools:alpha="100"
                     />
 
-<!--                <com.google.android.material.textfield.TextInputLayout-->
-<!--                    android:id="@+id/emailEditTextLayout"-->
-<!--                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:boxBackgroundColor="@color/cream"-->
-<!--                    app:boxCornerRadiusBottomEnd="10dp"-->
-<!--                    app:boxCornerRadiusBottomStart="10dp"-->
-<!--                    app:boxCornerRadiusTopEnd="10dp"-->
-<!--                    app:boxCornerRadiusTopStart="10dp"-->
-<!--                    app:boxStrokeColor="@android:color/transparent"-->
-<!--                    app:boxStrokeWidth="0dp"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/tv_email"-->
-<!--                    tools:alpha="100">-->
-
-<!--                    <com.google.android.material.textfield.TextInputEditText-->
-<!--                        android:id="@+id/emailEditText"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:ems="10"-->
-<!--                        android:inputType="textEmailAddress"-->
-<!--                        tools:ignore="SpeakableTextPresentCheck" />-->
-<!--                </com.google.android.material.textfield.TextInputLayout>-->
-
                 <TextView
                     android:id="@+id/tv_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Password"
+                    android:text="@string/txt_password"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
@@ -204,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Confirm Password"
+                    android:text="@string/txt_confirm_password"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayout" />
@@ -244,7 +193,7 @@
                     android:layout_marginBottom="50dp"
                     android:backgroundTint="@color/satinBlue"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="Sign Up"
+                    android:text="@string/btn_sign_up"
                     android:textSize="18sp"
                     app:cornerRadius="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"

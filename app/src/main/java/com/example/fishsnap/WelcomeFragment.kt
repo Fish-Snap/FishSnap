@@ -1,5 +1,6 @@
 package com.example.fishsnap
 
+import android.content.Context
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -16,6 +17,7 @@ import com.example.fishsnap.databinding.FragmentWelcomeBinding
 
 
 class WelcomeFragment : Fragment() {
+
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding
 
@@ -29,6 +31,15 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val token = sharedPreferences.getString("TOKEN", null)
+
+        if (token != null) {
+            findNavController().navigate(R.id.action_welcomeFragment_to_homeFragment)
+            return
+        }
+
         val signUpText = getString(R.string.text_validation)
         val spannableString = SpannableString(signUpText)
 
@@ -56,7 +67,6 @@ class WelcomeFragment : Fragment() {
         binding?.btnSignIn?.setOnClickListener {
             findNavController().navigate(R.id.action_welcomeFragment_to_signInFragment)
         }
-
     }
 
     override fun onDestroyView() {

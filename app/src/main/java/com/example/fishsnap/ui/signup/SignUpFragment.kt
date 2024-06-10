@@ -1,4 +1,4 @@
-package com.example.fishsnap
+package com.example.fishsnap.ui.signup
 
 import android.graphics.Color
 import android.os.Bundle
@@ -7,25 +7,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.fishsnap.R
+import com.example.fishsnap.auth.repository.AuthRepository
 import com.example.fishsnap.components.ConfirmPasswordTextField
 import com.example.fishsnap.components.PasswordTextField
 import com.example.fishsnap.databinding.FragmentSignUpBinding
+import com.example.fishsnap.ui.ViewModelFactory
 
 class SignUpFragment : Fragment() {
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: SignUpViewModel by viewModels {
+        ViewModelFactory(AuthRepository())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.window?.statusBarColor =  ContextCompat.getColor(requireContext(), R.color.darkGreen)
+        activity?.window?.statusBarColor =  ContextCompat.getColor(requireContext(),
+            R.color.darkGreen
+        )
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = false
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,15 +63,39 @@ class SignUpFragment : Fragment() {
             findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
         }
 
-        // Initialize the custom views
         val passwordEditText = binding.passwordTextInputLayout.findViewById<PasswordTextField>(R.id.passwordEditText)
-        val confirmPasswordEditText = binding.confirmPasswordTextInputLayout.findViewById<ConfirmPasswordTextField>(R.id.confirmPasswordEditText)
+        val confirmPasswordEditText = binding.confirmPasswordTextInputLayout.findViewById<ConfirmPasswordTextField>(
+            R.id.confirmPasswordEditText
+        )
 
-        // Set the PasswordTextField for ConfirmPasswordTextField
         confirmPasswordEditText.passwordTextField = passwordEditText
-        
-        // TO Do
-        // add validate if button sign up pressed
+
+        binding.btnSignUp.setOnClickListener {
+            val name = binding.usernameTextInputLayout.text.toString().trim()
+            val username = binding.usernameTextInputLayout.text.toString().trim()
+            val email = binding.emailEditTextLayout.text.toString().trim()
+            val password = binding.passwordEditText.text.toString().trim()
+            val confirmPassword = binding.confirmPasswordEditText.text.toString().trim()
+
+            if (password == confirmPassword) {
+                viewModel.registerUser(name, username, email, password)
+            } else {
+                Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+            if (response.isSuccessful) {
+                Toast.makeText(requireContext(), "Registration successful! Please verify your email.", Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
+            } else {
+                Toast.makeText(requireContext(), "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
+            Toast.makeText(requireContext(), "User Telah Terdaftar", Toast.LENGTH_SHORT).show()
+        })
     }
 
     private fun Fragment.resetStatusBarColor() {

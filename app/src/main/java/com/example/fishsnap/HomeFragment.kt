@@ -1,5 +1,6 @@
 package com.example.fishsnap
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.example.fishsnap.adapter.carouselAdapter.CarouselAdapter
 import com.example.fishsnap.adapter.newsAdapter.NewsAdapter
 import com.example.fishsnap.data.dummy.DummyItemsNews
 import com.example.fishsnap.databinding.FragmentHomeBinding
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.HeroCarouselStrategy
@@ -33,9 +35,15 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString("USER_NAME", "User")
+        val toolbar: MaterialToolbar = binding.topBar
+        toolbar.title = "Hi $userName!"
+
         newsList = getDummyNewsItems()
         newsAdapter = NewsAdapter(requireContext(), newsList)
-        
+
         setupCarouselRecyclerView()
         setupNewsRecyclerView()
     }
