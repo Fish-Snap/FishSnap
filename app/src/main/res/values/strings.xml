@@ -13,6 +13,8 @@
     <string name="text_login">Welcome Back!</string>
     <string name="error_email">Email must be use valid format</string>
     <string name="error_username">Username must be only 1 word</string>
+    <string name="error_name">Hanya boleh diisi huruf</string>
+    <string name="error_null">Tidak Boleh Kosong</string>
     <string name="menu_home">Beranda</string>
     <string name="menu_detection">Deteksi</string>
     <string name="menu_history">Riwayat</string>
@@ -34,6 +36,7 @@
     <string name="btn_syarat_dan_ketentuan">Syarat dan Ketentuan</string>
     <string name="txt_profile">Personal Info</string>
     <string name="txt_username">Username</string>
+    <string name="txt_name">Nama</string>
     <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="btn_change_password">Change Password</string>
     <string name="txt_email">Email</string>

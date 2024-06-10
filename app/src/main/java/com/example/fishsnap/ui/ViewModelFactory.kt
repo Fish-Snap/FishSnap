@@ -3,20 +3,22 @@ package com.example.fishsnap.ui
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.fishsnap.auth.ApiService
 import com.example.fishsnap.auth.repository.AuthRepository
 import com.example.fishsnap.ui.signup.SignUpViewModel
 import com.example.fishsnap.ui.singin.SignInViewModel
 
-class ViewModelFactory(private val repository: Any, private val sharedPreferences: SharedPreferences? = null) : ViewModelProvider.Factory {
+class ViewModelFactory(
+    private val apiService: ApiService,
+    private val sharedPreferences: SharedPreferences
+) : ViewModelProvider.Factory {
+
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return when {
-            modelClass.isAssignableFrom(SignUpViewModel::class.java) -> {
-                SignUpViewModel(repository as AuthRepository) as T
-            }
-            modelClass.isAssignableFrom(SignInViewModel::class.java) -> {
-                SignInViewModel(repository as AuthRepository, sharedPreferences!!) as T
-            }
-            else -> throw IllegalArgumentException("Unknown ViewModel class")
+        if (modelClass.isAssignableFrom(SignInViewModel::class.java)) {
+            return SignInViewModel(AuthRepository(apiService), sharedPreferences) as T
+        } else if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
+            return SignUpViewModel(AuthRepository(apiService)) as T
         }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

@@ -1,6 +1,7 @@
 package com.example.fishsnap
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,6 +26,9 @@ class HomeFragment : Fragment() {
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var newsList: MutableList<DummyItemsNews>
 
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferencesListener: SharedPreferences.OnSharedPreferenceChangeListener
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,16 +40,31 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
-        val userName = sharedPreferences.getString("USER_NAME", "User")
-        val toolbar: MaterialToolbar = binding.topBar
-        toolbar.title = "Hi $userName!"
+        sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        setupSharedPreferencesListener()
+
+        updateUserName()
 
         newsList = getDummyNewsItems()
         newsAdapter = NewsAdapter(requireContext(), newsList)
 
         setupCarouselRecyclerView()
         setupNewsRecyclerView()
+    }
+
+    private fun setupSharedPreferencesListener() {
+        sharedPreferencesListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            if (key == "USER_NAME") {
+                updateUserName()
+            }
+        }
+        sharedPreferences.registerOnSharedPreferenceChangeListener(sharedPreferencesListener)
+    }
+
+    private fun updateUserName() {
+        val userName = sharedPreferences.getString("USER_NAME", "User")
+        val toolbar: MaterialToolbar = binding.topBar
+        toolbar.title = "Hi, $userName!"
     }
 
     private fun setupNewsRecyclerView() {
@@ -124,5 +143,11 @@ class HomeFragment : Fragment() {
                 imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
             ),
         )
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        sharedPreferences.unregisterOnSharedPreferenceChangeListener(sharedPreferencesListener)
+        _binding = null
     }
 }

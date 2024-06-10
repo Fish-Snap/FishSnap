@@ -1,5 +1,6 @@
 package com.example.fishsnap.ui.profile
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,6 +26,13 @@ class ChangePasswordFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString("USER_USERNAME", "Username")
+        val email = sharedPreferences.getString("USER_EMAIL", "Email")
+        
+        binding.usernameTextInputLayout.setText(userName)
+        binding.emailEditTextLayout.setText(email)
 
         binding.ivBack.setOnClickListener {
             findNavController().navigateUp()

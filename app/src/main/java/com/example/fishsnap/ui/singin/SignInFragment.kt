@@ -15,6 +15,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.fishsnap.R
+import com.example.fishsnap.auth.ApiClient
 import com.example.fishsnap.auth.repository.AuthRepository
 import com.example.fishsnap.databinding.FragmentSignInBinding
 import com.example.fishsnap.ui.ViewModelFactory
@@ -30,7 +31,7 @@ class SignInFragment : Fragment() {
     }
 
     private val viewModel: SignInViewModel by viewModels {
-        ViewModelFactory(AuthRepository(), sharedPreferences)
+        ViewModelFactory(ApiClient.apiService, sharedPreferences)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

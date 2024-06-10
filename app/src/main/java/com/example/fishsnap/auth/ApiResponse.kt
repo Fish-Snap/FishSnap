@@ -5,11 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 
-@Parcelize
-data class ApiResponse(
-    @SerializedName("message")
-    val message: String,
-
-    @SerializedName("data")
-    val data: @RawValue Any?
-) : Parcelable
+data class ApiResponse<T>(
+    @SerializedName("message") val message: String,
+    @SerializedName("data") val data: T
+)

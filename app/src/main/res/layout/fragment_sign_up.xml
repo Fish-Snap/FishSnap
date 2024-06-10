@@ -66,6 +66,28 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/txt_name"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_signUp" />
+
+                <com.example.fishsnap.components.nameTextField
+                    android:id="@+id/nameTextInputLayout"
+                    style="@style/CustomTextField"
+                    android:inputType="text"
+                    android:backgroundTint="@color/cream"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                    tools:alpha="100"
+                    />
+
+                <TextView
                     android:id="@+id/tv_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -74,7 +96,7 @@
                     android:text="@string/txt_username"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_signUp" />
+                    app:layout_constraintTop_toBottomOf="@+id/nameTextInputLayout" />
 
                 <com.example.fishsnap.components.usernameTextField
                     android:id="@+id/usernameTextInputLayout"
