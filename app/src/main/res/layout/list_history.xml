@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardElevation="1dp"
+    app:strokeWidth="0dp"
+    app:strokeColor="@android:color/transparent"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    android:layout_margin="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_imageHistory"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic"/>
+
+        <TextView
+            android:id="@+id/tv_titleHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:ems="12"
+            android:fontFamily="@font/poppins_bold"
+            android:maxLines="1"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="6dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintStart_toEndOf="@+id/iv_imageHistory"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/full_names"/>
+
+        <TextView
+            android:id="@+id/tv_descriptionHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginBottom="6dp"
+            android:maxLines="2"
+            android:ems="15"
+            android:layout_marginStart="6dp"
+            app:layout_constraintStart_toEndOf="@+id/iv_imageHistory"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titleHistory"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            tools:text="@tools:sample/lorem/random"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
