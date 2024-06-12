@@ -1,5 +1,6 @@
 package com.example.fishsnap.utils
 
+import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
 import android.net.Uri
@@ -49,4 +50,21 @@ private fun getImageUriForPreQ(context: Context): Uri {
         "${BuildConfig.APPLICATION_ID}.fileprovider",
         imageFile
     )
+}
+
+fun getPathFromUri(context: Context, uri: Uri): String {
+    var path = ""
+    val cursor = context.contentResolver.query(uri, null, null, null, null)
+    cursor?.use {
+        it.moveToFirst()
+        val index = it.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+        path = if (index != -1) {
+            it.getString(index)
+        } else {
+            val documentId = it.getString(it.getColumnIndexOrThrow(MediaStore.Images.Media._ID))
+            val contentUri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, documentId.toLong())
+            File(contentUri.path).absolutePath
+        }
+    }
+    return path
 }

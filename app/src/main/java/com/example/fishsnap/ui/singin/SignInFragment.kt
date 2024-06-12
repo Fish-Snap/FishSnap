@@ -73,7 +73,7 @@ class SignInFragment : Fragment() {
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "User belum terdaftar", Toast.LENGTH_SHORT).show()
         })
     }
 

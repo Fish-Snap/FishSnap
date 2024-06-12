@@ -1,10 +1,13 @@
 package com.example.fishsnap.auth
 
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface ApiService {
     @POST("auth/register")
@@ -21,4 +24,11 @@ interface ApiService {
     suspend fun getUserData(
         @Header("Authorization") token: String
     ): Response<ApiResponse<UserResponse>>
+
+    @Multipart
+    @POST("fish/scan")
+    suspend fun scanFish(
+        @Part file: MultipartBody.Part,
+        @Header("Authorization") token: String
+    ): Response<ApiResponse<FishScanResponse>>
 }

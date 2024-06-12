@@ -86,10 +86,10 @@ class HomeFragment : Fragment() {
         carouselRecyclerView.layoutManager = carouselLayoutManager
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
         carouselRecyclerView.adapter = CarouselAdapter(images = getImages()) { imageUrl ->
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFishFragment(
-                imageUrl
-            )
-            findNavController().navigate(action)
+//            val action = HomeFragmentDirections.actionHomeFragmentToDetailFishFragment(
+//                imageUrl
+//            )
+//            findNavController().navigate(action)
         }
     }
 

@@ -88,7 +88,7 @@ class SignUpFragment : Fragment() {
 
         viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful) {
-                Toast.makeText(requireContext(), "Registration successful! Please verify your email.", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Registrasi Berhasil! Silahkan lakukan verifikasi diemail anda", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
             } else {
                 Toast.makeText(requireContext(), "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()

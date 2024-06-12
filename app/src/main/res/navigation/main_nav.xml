@@ -61,6 +61,9 @@
         android:name="com.example.fishsnap.ui.detection.DetectionFragment"
         android:label="fragment_detection"
         tools:layout="@layout/fragment_detection" />
+    <action
+        android:id="@+id/action_detectionFragment_to_detailFishFragment"
+        app:destination="@id/detailFishFragment" />
     <fragment
         android:id="@+id/historyFragment"
         android:name="com.example.fishsnap.HistoryFragment"
@@ -117,9 +120,13 @@
     </fragment>
     <fragment
         android:id="@+id/detailFishFragment"
-        android:name="com.example.fishsnap.DetailFishFragment"
+        android:name="com.example.fishsnap.ui.detailFish.DetailFishFragment"
         android:label="fragment_detail_fish"
-        tools:layout="@layout/fragment_detail_fish" />
+        tools:layout="@layout/fragment_detail_fish" >
+        <argument
+            android:name="fishScanResponse"
+            app:argType="com.example.fishsnap.auth.FishScanResponse" />
+    </fragment>
     <fragment
         android:id="@+id/detailNewsFragment"
         android:name="com.example.fishsnap.DetailNewsFragment"

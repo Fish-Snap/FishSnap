@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.fishsnap.auth.ApiService
 import com.example.fishsnap.auth.repository.AuthRepository
+import com.example.fishsnap.auth.repository.FishRepository
+import com.example.fishsnap.ui.detection.DetectionViewModel
 import com.example.fishsnap.ui.signup.SignUpViewModel
 import com.example.fishsnap.ui.singin.SignInViewModel
 
@@ -18,6 +20,8 @@ class ViewModelFactory(
             return SignInViewModel(AuthRepository(apiService), sharedPreferences) as T
         } else if (modelClass.isAssignableFrom(SignUpViewModel::class.java)) {
             return SignUpViewModel(AuthRepository(apiService)) as T
+        } else if (modelClass.isAssignableFrom(DetectionViewModel::class.java)) {
+            return DetectionViewModel(FishRepository(apiService), sharedPreferences) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

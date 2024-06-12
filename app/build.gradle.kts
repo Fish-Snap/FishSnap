@@ -17,7 +17,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", "\"https://fish-snap-backend-ts-3ojb7ichaq-et.a.run.app/\"")
+        buildConfigField("String", "BASE_URL", "\"https://fish-snap-backend-ts-dvasyd6mua-et.a.run.app/\"")
     }
 
     buildTypes {
