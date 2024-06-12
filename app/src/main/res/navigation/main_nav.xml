@@ -60,18 +60,20 @@
         android:id="@+id/detectionFragment"
         android:name="com.example.fishsnap.ui.detection.DetectionFragment"
         android:label="fragment_detection"
-        tools:layout="@layout/fragment_detection" />
-    <action
-        android:id="@+id/action_detectionFragment_to_detailFishFragment"
-        app:destination="@id/detailFishFragment" />
+        tools:layout="@layout/fragment_detection">
+        <action
+            android:id="@+id/action_detectionFragment_to_detailFishFragment"
+            app:destination="@id/detailFishFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.fishsnap.HistoryFragment"
+        android:name="com.example.fishsnap.ui.history.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" >
         <action
-            android:id="@+id/action_historyFragment_to_detailHistoryFragment"
-            app:destination="@id/detailHistoryFragment" />
+            android:id="@+id/action_historyFragment_to_detailFishFragment"
+            app:destination="@id/detailFishFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -122,10 +124,19 @@
         android:id="@+id/detailFishFragment"
         android:name="com.example.fishsnap.ui.detailFish.DetailFishFragment"
         android:label="fragment_detail_fish"
-        tools:layout="@layout/fragment_detail_fish" >
+        tools:layout="@layout/fragment_detail_fish">
         <argument
             android:name="fishScanResponse"
             app:argType="com.example.fishsnap.auth.FishScanResponse" />
+        <action
+            android:id="@+id/action_detailFishFragment_to_detailRecipeFragment"
+            app:destination="@id/detailRecipeFragment" />
+        <action
+            android:id="@+id/action_detailFishFragment_to_detectionFragment"
+            app:destination="@id/detectionFragment"/>
+        <action
+            android:id="@+id/action_detailFishFragment_to_historyFragment"
+            app:destination="@id/historyFragment"/>
     </fragment>
     <fragment
         android:id="@+id/detailNewsFragment"
@@ -137,5 +148,18 @@
         android:name="com.example.fishsnap.DetailHistoryFragment"
         android:label="fragment_detail_history"
         tools:layout="@layout/fragment_detail_history" />
+
+    <fragment
+        android:id="@+id/detailRecipeFragment"
+        android:name="com.example.fishsnap.ui.detailRecipe.DetailRecipeFragment"
+        android:label="fragment_detail_recipe"
+        tools:layout="@layout/fragment_detail_recipe">
+        <argument
+            android:name="productRecipe"
+            app:argType="com.example.fishsnap.auth.ProductRecipe" />
+        <action
+            android:id="@+id/action_detailRecipeFragment_to_detailFishFragment"
+            app:destination="@id/detailFishFragment"/>
+    </fragment>
 
 </navigation>

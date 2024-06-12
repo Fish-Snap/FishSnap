@@ -50,4 +50,7 @@
     <string name="anda_yakin_ingin_keluar">Anda yakin ingin keluar ?</string>
     <string name="btn_sign_up">Sign Up</string>
     <string name="txt_create_an_account">Create an account</string>
+    <string name="deskripsi_masakan">Deskripsi Masakan</string>
+    <string name="nama_masakan">Nama Masakan</string>
+    <string name="nama_ikan">Nama Ikan</string>
 </resources>

@@ -31,4 +31,9 @@ interface ApiService {
         @Part file: MultipartBody.Part,
         @Header("Authorization") token: String
     ): Response<ApiResponse<FishScanResponse>>
+
+    @GET("fish/history")
+    suspend fun getFishHistory(
+        @Header("Authorization") token: String
+    ): Response<ApiResponse<List<FishScanResponse>>>
 }

@@ -7,6 +7,7 @@ import com.example.fishsnap.auth.ApiService
 import com.example.fishsnap.auth.repository.AuthRepository
 import com.example.fishsnap.auth.repository.FishRepository
 import com.example.fishsnap.ui.detection.DetectionViewModel
+import com.example.fishsnap.ui.history.HistoryViewModel
 import com.example.fishsnap.ui.signup.SignUpViewModel
 import com.example.fishsnap.ui.singin.SignInViewModel
 
@@ -22,6 +23,8 @@ class ViewModelFactory(
             return SignUpViewModel(AuthRepository(apiService)) as T
         } else if (modelClass.isAssignableFrom(DetectionViewModel::class.java)) {
             return DetectionViewModel(FishRepository(apiService), sharedPreferences) as T
+        } else if(modelClass.isAssignableFrom(HistoryViewModel::class.java)){
+            return HistoryViewModel(sharedPreferences) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
