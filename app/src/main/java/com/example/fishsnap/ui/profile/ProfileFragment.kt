@@ -43,11 +43,12 @@ class ProfileFragment : Fragment() {
         val userName = sharedPreferences.getString("USER_NAME", "User")
         binding.tvUsername.text = userName
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+        val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                requireActivity().finish()
+                findNavController().popBackStack()
             }
-        })
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         binding.btnTermsAndConditions.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_termsFragment)
