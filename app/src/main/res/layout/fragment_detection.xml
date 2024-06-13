@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.detection.DetectionFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,10 +27,10 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/previewImageView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="350dp"
         android:layout_margin="16dp"
         android:background="@drawable/background_imagepreview"
         android:contentDescription="@string/image_preview"
@@ -36,7 +38,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbar_layout"
-        app:srcCompat="@drawable/place_holder" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/placeholder"
+        tools:ignore="ImageContrastCheck" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_gallery"
@@ -94,6 +99,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@id/btn_gallery"
         app:layout_constraintTop_toBottomOf="@+id/btn_gallery"
-        tools:ignore="VisualLintButtonSize" />
+        tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

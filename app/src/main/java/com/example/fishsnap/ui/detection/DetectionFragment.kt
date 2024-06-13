@@ -2,8 +2,6 @@ package com.example.fishsnap.ui.detection
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -23,20 +21,15 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.fishsnap.R
 import com.example.fishsnap.auth.ApiClient
-import com.example.fishsnap.auth.FishScanResponse
-import com.example.fishsnap.auth.repository.FishRepository
-import com.yalantis.ucrop.UCrop
 import com.example.fishsnap.databinding.FragmentDetectionBinding
 import com.example.fishsnap.ui.ViewModelFactory
 import com.example.fishsnap.utils.FishDetectionModel
 import com.example.fishsnap.utils.getImageUri
-import com.example.fishsnap.utils.getPathFromUri
+import com.yalantis.ucrop.UCrop
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import org.tensorflow.lite.support.image.TensorImage
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
