@@ -37,6 +37,13 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
         historyAdapter = HistoryAdapter(emptyList()) { fishScanResponse ->
             val action = HistoryFragmentDirections.actionHistoryFragmentToDetailFishFragment(fishScanResponse)
             findNavController().navigate(action)

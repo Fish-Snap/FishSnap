@@ -27,11 +27,12 @@ class DetailRecipeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+        val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.action_detailRecipeFragment_to_detailFishFragment)
+                findNavController().popBackStack()
             }
-        })
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         arguments?.let {
             val recipe = DetailRecipeFragmentArgs.fromBundle(it).productRecipe
@@ -39,7 +40,7 @@ class DetailRecipeFragment : Fragment() {
         }
 
         binding.btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_detailRecipeFragment_to_detailFishFragment)
+            findNavController().popBackStack()
         }
     }
 

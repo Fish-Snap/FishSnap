@@ -46,13 +46,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_detailFishFragment"
-            app:destination="@id/detailFishFragment" >
-            <argument
-                android:name="imageUrl"
-                app:argType="string" />
-        </action>
-        <action
             android:id="@+id/action_homeFragment_to_detailNewsFragment"
             app:destination="@id/detailNewsFragment" />
     </fragment>
@@ -133,12 +126,6 @@
         <action
             android:id="@+id/action_detailFishFragment_to_detailRecipeFragment"
             app:destination="@id/detailRecipeFragment" />
-        <action
-            android:id="@+id/action_detailFishFragment_to_detectionFragment"
-            app:destination="@id/detectionFragment"/>
-        <action
-            android:id="@+id/action_detailFishFragment_to_historyFragment"
-            app:destination="@id/historyFragment"/>
     </fragment>
     <fragment
         android:id="@+id/detailNewsFragment"
@@ -159,9 +146,6 @@
         <argument
             android:name="productRecipe"
             app:argType="com.example.fishsnap.auth.ProductRecipe" />
-        <action
-            android:id="@+id/action_detailRecipeFragment_to_detailFishFragment"
-            app:destination="@id/detailFishFragment"/>
     </fragment>
 
 </navigation>

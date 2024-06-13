@@ -17,7 +17,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -136,23 +135,26 @@ class DetectionFragment : Fragment() {
             }
         }
 
-        viewModel.scanResponse.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.scanResponse.observe(viewLifecycleOwner) { response ->
             if (response.isSuccessful) {
                 val fishData = response.body()?.data
                 fishData?.let {
-                    val annotatedImagePath = saveBitmap(binding.previewImageView.drawable.toBitmap())
+                    val annotatedImagePath =
+                        saveBitmap(binding.previewImageView.drawable.toBitmap())
                     it.annotatedImagePath = annotatedImagePath
-                    val action = DetectionFragmentDirections.actionDetectionFragmentToDetailFishFragment(it)
+                    val action =
+                        DetectionFragmentDirections.actionDetectionFragmentToDetailFishFragment(it)
                     findNavController().navigate(action)
                 }
             } else {
-                Toast.makeText(requireContext(), "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Error: ${response.message()}", Toast.LENGTH_SHORT)
+                    .show()
             }
-        })
+        }
 
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
+        viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-        })
+        }
     }
 
     private fun analyzeImage(uri: Uri) {
@@ -164,7 +166,7 @@ class DetectionFragment : Fragment() {
         }
         val imageBitmap = BitmapFactory.decodeFile(path)
         val fishDetectionModel = FishDetectionModel(requireContext())
-        val (label, confidence) = fishDetectionModel.detectFish(imageBitmap)
+        val (_, confidence) = fishDetectionModel.detectFish(imageBitmap)
         val bitmapWithBoundingBox = fishDetectionModel.drawBoundingBox(imageBitmap, confidence)
 
         // Display the annotated image
@@ -282,9 +284,9 @@ class DetectionFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-        private const val REQUEST_GALLERY = 1001
-        private const val REQUEST_CAMERA = 1002
-    }
+//    companion object {
+//        private const val REQUEST_GALLERY = 1001
+//        private const val REQUEST_CAMERA = 1002
+//    }
 }
 
