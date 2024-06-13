@@ -22,7 +22,6 @@ class DetailFishFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var recommendationAdapter: RecommendationAdapter
-
     private lateinit var locationAdapter: LocationAdapter
 
     override fun onCreateView(
@@ -62,7 +61,7 @@ class DetailFishFragment : Fragment() {
 
             Glide.with(this@DetailFishFragment)
                 .load(fishScanResponse.urlImg)
-                .into(fishImageView)
+                .into(annotatedImageView)
         }
     }
 
@@ -95,3 +94,6 @@ class DetailFishFragment : Fragment() {
         _binding = null
     }
 }
+
+
+

@@ -10,11 +10,13 @@ data class FishScanResponse(
     val codeFishModel: String,
     val name: String,
     val scientificName: String,
-    val urlImg: String,
+    var urlImg: String,
     val otherNames: List<String>,
     val description: List<String>,
     val productRecipe: List<ProductRecipe>,
-    val location: List<Location>
+    val location: List<Location>,
+    var annotatedImagePath: String?,
+    val createdAt: String
 ) : Parcelable
 
 @Parcelize

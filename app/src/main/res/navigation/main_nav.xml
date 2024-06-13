@@ -63,7 +63,9 @@
         tools:layout="@layout/fragment_detection">
         <action
             android:id="@+id/action_detectionFragment_to_detailFishFragment"
-            app:destination="@id/detailFishFragment" />
+            app:destination="@id/detailFishFragment"
+            app:popUpTo="@id/detectionFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment

@@ -29,7 +29,8 @@ interface ApiService {
     @POST("fish/scan")
     suspend fun scanFish(
         @Part file: MultipartBody.Part,
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Part("annotatedImagePath") annotatedImagePath: String
     ): Response<ApiResponse<FishScanResponse>>
 
     @GET("fish/history")

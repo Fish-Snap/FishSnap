@@ -23,7 +23,7 @@ class HistoryViewModel(private val sharedPreferences: SharedPreferences) : ViewM
                 try {
                     val response = ApiClient.apiService.getFishHistory("Bearer $token")
                     if (response.isSuccessful) {
-                        _historyData.value = response.body()?.data ?: emptyList()
+                        _historyData.value = response.body()?.data?.sortedByDescending { it.createdAt } ?: emptyList()
                     } else {
                         errorMessage.postValue("History Tidak Ada")
                     }

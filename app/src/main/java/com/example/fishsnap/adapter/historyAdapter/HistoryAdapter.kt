@@ -17,33 +17,35 @@ import com.example.fishsnap.auth.FishScanResponse
 import com.example.fishsnap.data.dummy.DummyItemsHistory
 import com.example.fishsnap.databinding.ListHistoryBinding
 
-class HistoryAdapter(private val histories: List<FishScanResponse>, private val onClick: (FishScanResponse) -> Unit) :
-    RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
+class HistoryAdapter(
+    private val historyList: List<FishScanResponse>,
+    private val onItemClick: (FishScanResponse) -> Unit
+) : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_history, parent, false)
-        return HistoryViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        holder.bind(histories[position])
-    }
-
-    override fun getItemCount(): Int = histories.size
-
-    inner class HistoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val historyFishImageView: ImageView = itemView.findViewById(R.id.iv_imageHistory)
-        private val historyFishNameTextView: TextView = itemView.findViewById(R.id.tv_titleHistory)
-        private val historyFishDescriptionTextView: TextView = itemView.findViewById(R.id.tv_descriptionHistory)
-
-        fun bind(history: FishScanResponse) {
-            historyFishNameTextView.text = history.name
-            historyFishDescriptionTextView.text = history.description.joinToString(". ")
-            Glide.with(itemView.context).load(history.urlImg).into(historyFishImageView)
-
-            itemView.setOnClickListener {
-                onClick(history)
+    inner class HistoryViewHolder(val binding: ListHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(fishScanResponse: FishScanResponse) {
+            binding.tvTitleHistory.text = fishScanResponse.name
+            binding.tvDescriptionHistory.text = fishScanResponse.description.joinToString("\n")
+            Glide.with(binding.ivImageHistory.context)
+                .load(fishScanResponse.annotatedImagePath ?: fishScanResponse.urlImg)
+                .into(binding.ivImageHistory)
+            binding.root.setOnClickListener {
+                onItemClick(fishScanResponse)
             }
         }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
+        val binding = ListHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HistoryViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
+        holder.bind(historyList[position])
+    }
+
+    override fun getItemCount(): Int {
+        return historyList.size
+    }
 }
+

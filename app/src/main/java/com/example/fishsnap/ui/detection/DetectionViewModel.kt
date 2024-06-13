@@ -20,11 +20,16 @@ class DetectionViewModel(private val repository: FishRepository, private val sha
     val scanResponse = MutableLiveData<Response<ApiResponse<FishScanResponse>>>()
     val errorMessage = MutableLiveData<String>()
 
-    fun scanFish(file: MultipartBody.Part, token: String) {
+    fun scanFish(file: MultipartBody.Part, token: String, annotatedImagePath: String) {
         viewModelScope.launch {
             try {
-                val response = repository.scanFish(file, token)
+                val response = repository.scanFish(file, token, annotatedImagePath)
                 if (response.isSuccessful) {
+                    // Update the response to include the annotated image path
+                    val fishScanResponse = response.body()?.data
+                    fishScanResponse?.let {
+                        it.urlImg = annotatedImagePath // Update urlImg with the path of the annotated image
+                    }
                     scanResponse.postValue(response)
                 } else {
                     Log.e("DetectionViewModel", "Scan failed: Ikan tidak terdeteksi")
