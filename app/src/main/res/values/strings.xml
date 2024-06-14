@@ -10,7 +10,7 @@
     <string name="made_by">Made by</string>
     <string name="capstone_team_c241_ps013">Capstone Team C241-PS013</string>
     <string name="logo">Logo</string>
-    <string name="text_login">Welcome Back!</string>
+    <string name="text_login">Selamat Datang Kembali!</string>
     <string name="error_email">Email must be use valid format</string>
     <string name="error_username">Username must be only 1 word</string>
     <string name="error_name">Hanya boleh diisi huruf</string>
@@ -21,9 +21,9 @@
     <string name="menu_profile">Profil</string>
     <string name="error_password">Password harus melebihi 8 karakter</string>
     <string name="background_image">Background Image</string>
-    <string name="enter_your_account_to_login">Enter your account to login</string>
+    <string name="enter_your_account_to_login">Masukkan akun anda untuk masuk ke aplikasi</string>
     <string name="password">Password</string>
-    <string name="username">Username</string>
+    <string name="username">Nama Pengguna</string>
     <string name="detection_image">Deteksi Gambar</string>
     <string name="image_preview">Image Preview</string>
     <string name="btn_analyze">Analisis</string>
@@ -55,4 +55,6 @@
     <string name="nama_ikan">Nama Ikan</string>
     <string name="rekomendasi_masakan">Rekomendasi Masakan</string>
     <string name="tidak_ada_data_riwayat">Tidak ada data riwayat</string>
+    <string name="hint_password">********</string>
+    <string name="hint_username">Dicoding Indonesia</string>
 </resources>
