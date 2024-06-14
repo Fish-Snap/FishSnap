@@ -77,7 +77,9 @@
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/main_nav"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_profileFragment_to_termsFragment"
             app:destination="@id/termsFragment" />
@@ -92,29 +94,17 @@
         android:id="@+id/termsFragment"
         android:name="com.example.fishsnap.ui.profile.TermsFragment"
         android:label="fragment_terms"
-        tools:layout="@layout/fragment_terms" >
-        <action
-            android:id="@+id/action_profileFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_terms" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.fishsnap.ui.profile.AboutFragment"
         android:label="fragment_about"
-        tools:layout="@layout/fragment_about" >
-        <action
-            android:id="@+id/action_profileFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.example.fishsnap.ui.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" >
-        <action
-            android:id="@+id/action_profileFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/detailFishFragment"
         android:name="com.example.fishsnap.ui.detailFish.DetailFishFragment"

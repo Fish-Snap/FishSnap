@@ -2,7 +2,6 @@ package com.example.fishsnap.ui.profile
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +13,6 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.findNavController
-import com.example.fishsnap.MainActivity
 import com.example.fishsnap.R
 import com.example.fishsnap.databinding.DialogLogoutBinding
 import com.example.fishsnap.databinding.FragmentProfileBinding
