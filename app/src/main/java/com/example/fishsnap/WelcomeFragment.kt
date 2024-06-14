@@ -61,8 +61,8 @@ class WelcomeFragment : Fragment() {
             }
         }
 
-        val start = signUpText.indexOf("Sign Up")
-        val end = start + "Sign Up".length
+        val start = signUpText.indexOf("Daftar disini")
+        val end = start + "Daftar disini".length
 
         spannableString.setSpan(clickableSpan, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
