@@ -50,19 +50,19 @@ class ProfileFragment : Fragment() {
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
-        binding.btnTermsAndConditions.setOnClickListener {
+        binding.cvTerms.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_termsFragment)
         }
 
-        binding.btnAboutUs.setOnClickListener {
+        binding.cvAboutUs.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_aboutFragment)
         }
 
-        binding.btnChangePassword.setOnClickListener {
+        binding.cvChangePassword.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_changePasswordFragment)
         }
 
-        binding.btnLogout.setOnClickListener {
+        binding.cvLogout.setOnClickListener {
             showLogoutDialog()
         }
     }
