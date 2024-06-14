@@ -101,7 +101,7 @@ class SignUpFragment : Fragment() {
     }
 
     private fun Fragment.resetStatusBarColor() {
-        activity?.window?.statusBarColor = Color.TRANSPARENT
+        activity?.window?.statusBarColor = Color.WHITE
         WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = true
     }
     override fun onDestroyView() {

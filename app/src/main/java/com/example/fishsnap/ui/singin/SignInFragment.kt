@@ -79,7 +79,7 @@ class SignInFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), android.R.color.transparent)
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), android.R.color.white)
         WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = true
         _binding = null
     }

@@ -29,6 +29,11 @@ class WelcomeFragment : Fragment() {
         return binding?.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.white)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

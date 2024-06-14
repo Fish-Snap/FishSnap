@@ -107,7 +107,7 @@ class ProfileFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        activity?.window?.statusBarColor = Color.TRANSPARENT
+        activity?.window?.statusBarColor = Color.WHITE
         WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = true
         _binding = null
     }
