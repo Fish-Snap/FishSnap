@@ -8,6 +8,17 @@
     android:background="#FFFFFF"
     tools:context=".ui.profile.ProfileFragment">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:lottie_rawRes="@raw/background_fish"
+        app:lottie_loop="true"
+        android:scaleType="fitXY"
+        app:lottie_autoPlay="true"/>
+
     <!-- Background Image -->
     <ImageView
         android:id="@+id/ivBackground"
