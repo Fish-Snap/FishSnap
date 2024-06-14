@@ -2,7 +2,7 @@
 <resources>
     <style name="Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/fishsnap_logo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_app</item>
         <item name="postSplashScreenTheme">@style/Theme.FishSnap</item>
     </style>
 </resources>

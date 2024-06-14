@@ -54,12 +54,12 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // SplashScreen
+    implementation(libs.androidx.core.splashscreen)
+
     // Navigation
     implementation (libs.androidx.navigation.fragment.ktx)
     implementation (libs.androidx.navigation.ui.ktx)
-
-    // SplashScreen
-    implementation (libs.androidx.core.splashscreen)
 
     // Ucrop
     implementation(libs.ucrop)

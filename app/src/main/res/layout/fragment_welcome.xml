@@ -29,7 +29,7 @@
                     android:id="@+id/iv_logo"
                     android:layout_width="360dp"
                     android:layout_height="360dp"
-                    android:src="@drawable/fishsnap_logo"
+                    android:src="@drawable/logo_app"
                     android:contentDescription="@string/logo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -39,7 +39,7 @@
             android:id="@+id/ivProfileImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/fishsnap_logo"
+            android:src="@drawable/logo_app"
             android:layout_below="@id/tvPersonalInfo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
