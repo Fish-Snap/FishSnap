@@ -55,6 +55,15 @@ class HistoryFragment : Fragment() {
         }
 
         viewModel.historyData.observe(viewLifecycleOwner) { historyList ->
+            if (historyList.isEmpty()) {
+                binding.handleImage.visibility = View.VISIBLE
+                binding.handleText.visibility = View.VISIBLE
+                binding.recyclerHistory.visibility = View.GONE
+            } else {
+                binding.handleImage.visibility = View.GONE
+                binding.handleText.visibility = View.GONE
+                binding.recyclerHistory.visibility = View.VISIBLE
+            }
             historyAdapter = HistoryAdapter(historyList) { fishScanResponse ->
                 val action = HistoryFragmentDirections.actionHistoryFragmentToDetailFishFragment(fishScanResponse)
                 findNavController().navigate(action)
