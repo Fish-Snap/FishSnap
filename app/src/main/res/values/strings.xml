@@ -56,4 +56,5 @@
     <string name="tidak_ada_data_riwayat">Tidak ada data riwayat</string>
     <string name="hint_password">********</string>
     <string name="hint_username">Dicoding Indonesia</string>
+    <string name="no_news">Tidak ada berita yang ditampilkan</string>
 </resources>

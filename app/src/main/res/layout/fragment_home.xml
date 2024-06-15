@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -54,15 +54,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--            <com.google.android.material.progressindicator.LinearProgressIndicator-->
-<!--                android:id="@+id/linearProgress"-->
-<!--                android:layout_marginTop="?attr/actionBarSize"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:indeterminate="true"-->
-<!--                app:hideAnimationBehavior="inward"-->
-<!--                app:showAnimationBehavior="inward"/>-->
-
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/top_bar"
                 android:layout_width="match_parent"
@@ -84,6 +75,34 @@
             app:title="Berita"/>
 
     </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:id="@+id/noNewsLayout"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/noNewsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_news"
+            android:textSize="18sp"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/poppins_bold"/>
+
+        <ImageView
+            android:id="@+id/noNewsIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_newspaper"
+            android:layout_marginTop="16dp"
+            app:tint="@color/grey" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerNews"
