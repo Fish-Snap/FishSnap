@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">FishSnap</string>
+    <string name="app_name">Fish Snap</string>
     <string name="hello_blank_fragment">Halo fragmen kosong</string>
-    <string name="welcome">Selamat datang di FishSnap!</string>
+    <string name="welcome">Selamat datang di Fish Snap!</string>
     <string name="welcome_description">Fokus aplikasi kami adalah untuk mendidik masyarakat dan membantu praktisi perikanan serta membuat program interaktif yang dapat diakses dengan mudah oleh semua orang.</string>
     <string name="btn_signIn">Masuk</string>
     <string name="text_validation">Belum punya akun? <u><b>Daftar disini</b></u></string>
@@ -63,8 +63,8 @@
     <string name="btn_submit">Kirim</string>
     <string name="forgot_password">Lupa Kata Sandi?</string>
     <string name="tv_forgot_password">Lupa Kata Sandi</string>
-    <string name="content_atas_about">FishSnap adalah sebuah aplikasi inovatif yang memanfaatkan teknologi deteksi gambar untuk membantu pengguna mengidentifikasi berbagai jenis ikan hanya dengan menggunakan kamera ponsel mereka. Aplikasi ini tidak hanya memungkinkan pengguna untuk mengambil foto ikan yang menarik perhatian mereka, tetapi juga memberikan informasi yang mendalam mengenai jenis ikan tersebut serta berbagai resep olahan ikan yang dapat dicoba.</string>
-    <string name="tv_about_fish_snap">FishSnap</string>
+    <string name="content_atas_about">Fish Snap adalah sebuah aplikasi inovatif yang memanfaatkan teknologi deteksi gambar untuk membantu pengguna mengidentifikasi berbagai jenis ikan hanya dengan menggunakan kamera ponsel mereka. Aplikasi ini tidak hanya memungkinkan pengguna untuk mengambil foto ikan yang menarik perhatian mereka, tetapi juga memberikan informasi yang mendalam mengenai jenis ikan tersebut serta berbagai resep olahan ikan yang dapat dicoba.</string>
+    <string name="tv_about_fish_snap">Fish Snap</string>
     <string name="tv_about_content_fitur_utama">Fitur Utama :</string>
     <string name="_1_deteksi_dan_identifikasi_ikan">1. Deteksi dan Identifikasi Ikan</string>
     <string name="_2_informasi_lengkap_tentang_ikan">2. Informasi Lengkap tentang Ikan</string>
@@ -72,13 +72,13 @@
     <string name="_4_kemudahan_penggunaan">4. Kemudahan Penggunaan</string>
     <string name="cek_email_forgot_password">Cek email anda untuk menerima pengaturan ulang kata sandi</string>
     <string name="tv_syarat_dan_ketentuan">Syarat dan Ketentuan</string>
-    <string name="welcome_terms">Selamat datang di FishSnap! Untuk menggunakan aplikasi kami dengan baik, harap baca dan pahami syarat dan ketentuan berikut :</string>
+    <string name="welcome_terms">Selamat datang di Fish Snap! Untuk menggunakan aplikasi kami dengan baik, harap baca dan pahami syarat dan ketentuan berikut :</string>
     <string name="purpose_icon">Purpose Icon</string>
     <string name="_1_tujuan_penggunaan_aplikasi">1. Tujuan Penggunaan Aplikasi</string>
     <string name="_2_ketersediaan_layanan">2. Ketersediaan Layanan</string>
     <string name="availability_icon">Availability Icon</string>
-    <string name="content_1_terms">FishSnap dirancang untuk membantu pengguna dalam mendeteksi dan mengidentifikasi jenis ikan berdasarkan gambar yang diambil menggunakan kamera ponsel. Informasi yang disediakan termasuk nama ikan, deskripsi, dan informasi terkait olahan ikan.</string>
-    <string name="content_2_terms">Aplikasi FishSnap tersedia untuk digunakan di seluruh dunia, namun tidak dapat menjamin bahwa aplikasi akan berjalan tanpa gangguan teknis.</string>
+    <string name="content_1_terms">Fish Snap dirancang untuk membantu pengguna dalam mendeteksi dan mengidentifikasi jenis ikan berdasarkan gambar yang diambil menggunakan kamera ponsel. Informasi yang disediakan termasuk nama ikan, deskripsi, dan informasi terkait olahan ikan.</string>
+    <string name="content_2_terms">Aplikasi Fish Snap tersedia untuk digunakan di seluruh dunia, namun tidak dapat menjamin bahwa aplikasi akan berjalan tanpa gangguan teknis.</string>
     <string name="privacy_icon">Privacy Icon</string>
     <string name="_3_privasi_pengguna">3. Privasi Pengguna</string>
     <string name="content_3_terms">Kami menghormati privasi pengguna. Data yang dikumpulkan oleh aplikasi akan digunakan sesuai dengan Kebijakan Privasi kami.</string>
@@ -94,5 +94,5 @@
     <string name="user_responsibility_icon">User Responsibility Icon</string>
     <string name="_7_kewajiban_pengguna">7. Kewajiban Pengguna</string>
     <string name="content_7_terms">Penggunaan aplikasi ini merupakan penerimaan sepenuhnya terhadap syarat dan ketentuan ini. Pengguna bertanggung jawab atas keamanan dan kerahasiaan akun mereka sendiri.</string>
-    <string name="thanks_terms">Terima kasih telah menggunakan FishSnap. Dengan mendaftar dan menggunakan aplikasi ini, Anda dianggap telah menyetujui syarat dan ketentuan ini sepenuhnya. Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi tim dukungan kami. Selamat menikmati pengalaman menjelajahi dunia ikan bersama FishSnap! 🐟</string>
+    <string name="thanks_terms">Terima kasih telah menggunakan Fish Snap. Dengan mendaftar dan menggunakan aplikasi ini, Anda dianggap telah menyetujui syarat dan ketentuan ini sepenuhnya. Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi tim dukungan kami. Selamat menikmati pengalaman menjelajahi dunia ikan bersama Fish Snap! 🐟</string>
 </resources>
