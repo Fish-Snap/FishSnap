@@ -14,6 +14,9 @@ import com.example.fishsnap.ui.home.HomeFragmentDirections
 import com.example.fishsnap.auth.NewsItem
 import com.example.fishsnap.data.dummy.DummyItemsNews
 import com.example.fishsnap.databinding.ListNewsBinding
+import java.text.SimpleDateFormat
+import java.util.Locale
+import java.util.TimeZone
 
 class NewsAdapter(private val context: Context, private var newsList: List<NewsItem>) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
@@ -44,7 +47,7 @@ class NewsAdapter(private val context: Context, private var newsList: List<NewsI
             binding.tvTitleNews.text = newsItem.title
             binding.tvDescriptionNews.text = newsItem.content
             binding.tvAuthorNews.text = newsItem.nameAuthor
-            binding.tvDateNews.text = newsItem.publicationAt
+            binding.tvDateNews.text = formatDate(newsItem.publicationAt)
 
             // Use Glide to load images
             Glide.with(context)
@@ -58,6 +61,14 @@ class NewsAdapter(private val context: Context, private var newsList: List<NewsI
                 intent.data = Uri.parse(newsItem.urlExternalNews)
                 context.startActivity(intent)
             }
+        }
+        private fun formatDate(dateString: String): String {
+            val apiDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+            apiDateFormat.timeZone = TimeZone.getTimeZone("UTC")
+            val date = apiDateFormat.parse(dateString)
+
+            val indonesianDateFormat = SimpleDateFormat("dd MMMM yyyy", Locale("id", "ID"))
+            return date?.let { indonesianDateFormat.format(it) } ?: dateString
         }
     }
 }
