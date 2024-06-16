@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -131,14 +133,18 @@ class DetectionFragment : Fragment() {
         }
 
         binding.btnAnalyze.setOnClickListener {
+            showLoading(true)
             selectedImageUri?.let { uri ->
                 analyzeImage(uri)
             } ?: run {
+                showLoading(false)
                 Toast.makeText(requireContext(), "No image selected", Toast.LENGTH_SHORT).show()
             }
         }
 
+        Handler(Looper.getMainLooper()).postDelayed({
         viewModel.scanResponse.observe(viewLifecycleOwner) { response ->
+            showLoading(false)
             if (response.isSuccessful) {
                 val fishData = response.body()?.data
                 fishData?.let {
@@ -155,12 +161,14 @@ class DetectionFragment : Fragment() {
         }
 
         viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
+            showLoading(false)
             message?.let {
                 if (it.isNotEmpty()) {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 }
             }
         }
+        }, 2000)
     }
 
     private fun analyzeImage(uri: Uri) {
@@ -176,13 +184,24 @@ class DetectionFragment : Fragment() {
         val bitmapWithBoundingBox = fishDetectionModel.drawBoundingBox(imageBitmap, confidence)
 
         // Display the annotated image if fish is detected
+        Handler(Looper.getMainLooper()).postDelayed({
         if (confidence > 0.5) { // assuming 0.5 as threshold for detection
             binding.previewImageView.setImageBitmap(bitmapWithBoundingBox)
             // Save the annotated image and update urlImg with its path
             val annotatedImagePath = saveBitmap(bitmapWithBoundingBox)
             updateUrlImg(file, annotatedImagePath)
         } else {
+            showLoading(false)
             Toast.makeText(requireContext(), "Ikan tidak terdeteksi", Toast.LENGTH_SHORT).show()
+        }
+        }, 2000)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingButton.root.visibility = View.VISIBLE
+        } else {
+            binding.loadingButton.root.visibility = View.GONE
         }
     }
 

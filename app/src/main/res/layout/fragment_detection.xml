@@ -101,4 +101,15 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_gallery"
         tools:ignore="VisualLintButtonSize,TextContrastCheck" />
 
+    <include
+        android:id="@+id/loading_button"
+        layout="@layout/button_loading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/btn_analyze"
+        app:layout_constraintEnd_toEndOf="@+id/btn_analyze"
+        app:layout_constraintStart_toStartOf="@+id/btn_analyze"
+        app:layout_constraintTop_toTopOf="@+id/btn_analyze" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
