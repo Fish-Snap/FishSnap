@@ -1,5 +1,6 @@
 package com.example.fishsnap.auth
 
+import com.example.fishsnap.ui.forgotpassword.ForgotPasswordRequest
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
@@ -42,4 +43,15 @@ interface ApiService {
     suspend fun getNews(
         @Header("Authorization") token: String
     ): Response<ApiResponse<List<NewsItem>>>
+
+    @POST("auth/change-password")
+    suspend fun changePassword(
+        @Header("Authorization") token: String,
+        @Body request: ChangePasswordRequest
+    ): Response<ApiResponse<ChangePasswordRequest>>
+
+    @POST("auth/forgot-password")
+    suspend fun forgotPassword(
+        @Body request: ForgotPasswordRequest
+    ): Response<ApiResponse<Any>>
 }

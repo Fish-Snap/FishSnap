@@ -48,6 +48,9 @@ class DetailRecipeFragment : Fragment() {
         with(binding) {
             recipeNameTextView.text = recipe.name
             recipeDescriptionTextView.text = recipe.description
+            Glide.with(this@DetailRecipeFragment)
+                .load(recipe.urlImg)
+                .into(recipeImageView)
 
             ingredientsTextView.text = recipe.material.joinToString("\n") { "- $it" }
             stepsTextView.text = recipe.steps.joinToString("\n") { "- $it" }

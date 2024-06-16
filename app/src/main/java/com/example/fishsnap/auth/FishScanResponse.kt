@@ -23,6 +23,7 @@ data class FishScanResponse(
 data class ProductRecipe(
     val name: String,
     val steps: List<String>,
+    val urlImg: String,
     val material: List<String>,
     val description: String
 ) : Parcelable

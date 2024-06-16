@@ -63,6 +63,10 @@ class SignInFragment : Fragment() {
             viewModel.loginUser(email, password)
         }
 
+        binding.tvForgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_forgotPasswordFragment)
+        }
+
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer { response ->
             if (response.isSuccessful) {
                 Toast.makeText(requireContext(), "Login Berhasil!", Toast.LENGTH_LONG).show()

@@ -31,6 +31,9 @@ class RecommendationAdapter(
         fun bind(recipe: ProductRecipe) {
             binding.recipeNameTextView.text = recipe.name
             binding.recipeDescriptionTextView.text = recipe.description
+            Glide.with(binding.recipeImageView.context)
+                .load(recipe.urlImg)
+                .into(binding.recipeImageView)
         }
     }
 

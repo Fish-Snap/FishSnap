@@ -57,4 +57,10 @@
     <string name="hint_password">********</string>
     <string name="hint_username">Dicoding Indonesia</string>
     <string name="no_news">Tidak ada berita yang ditampilkan</string>
+    <string name="bahan_bahan">Bahan - Bahan :</string>
+    <string name="cara_masak">Cara Masak :</string>
+    <string name="tv_old_password">Kata Sandi Lama</string>
+    <string name="btn_submit">Kirim</string>
+    <string name="forgot_password">Lupa Kata Sandi?</string>
+    <string name="tv_forgot_password">Lupa Kata Sandi</string>
 </resources>

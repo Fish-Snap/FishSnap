@@ -20,7 +20,7 @@
 
             <ImageView
                 android:id="@+id/recipeImageView"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
                 tools:text="Description" />
 
             <TextView
-                android:id="@+id/ingredientsTextView"
+                android:id="@+id/tv_ingredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
@@ -61,7 +61,38 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recipeDescriptionTextView"
-                tools:text="Bahan - Bahan" />
+                tools:text="Bahan - Bahan"
+                android:text="@string/bahan_bahan"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/ingredientsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_ingredients"
+                tools:text="Bahan - Bahan"
+                android:text="@string/bahan_bahan"/>
+
+            <TextView
+                android:id="@+id/tv_steps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ingredientsTextView"
+                tools:text="Cara Masak"
+                android:text="@string/cara_masak"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="16sp"/>
 
             <TextView
                 android:id="@+id/stepsTextView"
@@ -70,11 +101,12 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
                 android:justificationMode="inter_word"
-                android:textStyle="bold"
+                android:fontFamily="@font/poppins_regular"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ingredientsTextView"
-                tools:text="Cara Masak" />
+                app:layout_constraintTop_toBottomOf="@id/tv_steps"
+                tools:text="blablabla"
+                android:text="@string/cara_masak"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

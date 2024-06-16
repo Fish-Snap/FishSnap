@@ -39,6 +39,10 @@
         <action
             android:id="@+id/action_signInFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_forgotPasswordFragment"
+            app:destination="@+id/forgotPasswordFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -104,7 +108,27 @@
         android:id="@+id/changePasswordFragment"
         android:name="com.example.fishsnap.ui.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" />
+        tools:layout="@layout/fragment_change_password">
+        <action
+            android:id="@+id/action_changePasswordFragment_to_welcomeFragment"
+            app:destination="@+id/welcomeFragment"
+            />
+        <action
+            android:id="@+id/action_changePasswordFragment_to_homeFragment"
+            app:destination="@+id/homeFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.example.fishsnap.ui.forgotpassword.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password"
+        >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_signInFragment"
+            app:destination="@+id/signInFragment"
+            />
+    </fragment>
     <fragment
         android:id="@+id/detailFishFragment"
         android:name="com.example.fishsnap.ui.detailFish.DetailFishFragment"
