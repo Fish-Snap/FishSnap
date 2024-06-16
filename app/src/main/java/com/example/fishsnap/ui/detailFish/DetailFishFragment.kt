@@ -78,8 +78,7 @@ class DetailFishFragment : Fragment() {
             adapter = recommendationAdapter
         }
 
-        val randomRecipes = recipes.shuffled().take(3)
-        recommendationAdapter.submitList(randomRecipes)
+        recommendationAdapter.submitList(recipes)
     }
 
     private fun setupLocationRecyclerView(locations: List<Location>) {
@@ -96,6 +95,3 @@ class DetailFishFragment : Fragment() {
         _binding = null
     }
 }
-
-
-
