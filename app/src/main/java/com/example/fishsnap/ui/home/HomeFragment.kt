@@ -12,17 +12,21 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.fishsnap.adapter.carouselAdapter.CarouselAdapter
 import com.example.fishsnap.adapter.newsAdapter.NewsAdapter
 import com.example.fishsnap.auth.ApiClient
+import com.example.fishsnap.data.dummy.CarouselItem
 import com.example.fishsnap.data.dummy.DummyItemsNews
 import com.example.fishsnap.databinding.FragmentHomeBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.HeroCarouselStrategy
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -118,25 +122,21 @@ class HomeFragment : Fragment() {
         val carouselLayoutManager = CarouselLayoutManager(HeroCarouselStrategy())
         carouselRecyclerView.layoutManager = carouselLayoutManager
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
-        carouselRecyclerView.adapter = CarouselAdapter(images = getImages()) { imageUrl ->
-//            val action = HomeFragmentDirections.actionHomeFragmentToDetailFishFragment(
-//                imageUrl
-//            )
-//            findNavController().navigate(action)
+        val carouselItem = getCarouselItems()
+        carouselRecyclerView.adapter = CarouselAdapter(carouselItem) { carouselItem ->
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailCarouselFragment(carouselItem)
+            findNavController().navigate(action)
         }
     }
 
-    private fun getImages(): List<String> {
-        return listOf(
-            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
-            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
-            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
-            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
-            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
-            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
-            "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg",
-        )
+    private fun getCarouselItems(): List<CarouselItem> {
+        val json = requireContext().assets.open("carouselDummyItem.json").bufferedReader().use {
+            it.readText()
+        }
+        val listType = object : TypeToken<List<CarouselItem>>() {}.type
+        return Gson().fromJson(json, listType)
     }
+
 //
 //    private fun getDummyNewsItems(): MutableList<DummyItemsNews> {
 //        return mutableListOf(

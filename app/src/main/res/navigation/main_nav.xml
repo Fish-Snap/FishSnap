@@ -50,8 +50,8 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_detailNewsFragment"
-            app:destination="@id/detailNewsFragment" />
+            android:id="@+id/action_homeFragment_to_detailCarouselFragment"
+            app:destination="@id/detailCarouselFragment" />
     </fragment>
     <fragment
         android:id="@+id/detectionFragment"
@@ -142,10 +142,14 @@
             app:destination="@id/detailRecipeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/detailNewsFragment"
-        android:name="com.example.fishsnap.DetailNewsFragment"
+        android:id="@+id/detailCarouselFragment"
+        android:name="com.example.fishsnap.DetailCarouselFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail_news" />
+        tools:layout="@layout/fragment_detail_carousel" >
+        <argument
+            android:name="carouselItem"
+            app:argType="com.example.fishsnap.data.dummy.CarouselItem" />
+    </fragment>
     <fragment
         android:id="@+id/detailHistoryFragment"
         android:name="com.example.fishsnap.DetailHistoryFragment"

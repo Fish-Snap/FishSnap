@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fishsnap.adapter.historyAdapter.HistoryAdapter
 import com.example.fishsnap.auth.ApiClient
-import com.example.fishsnap.data.dummy.DummyItemsHistory
 import com.example.fishsnap.databinding.FragmentHistoryBinding
 import com.example.fishsnap.ui.ViewModelFactory
 

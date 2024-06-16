@@ -5,20 +5,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.example.fishsnap.data.dummy.CarouselItem
 import com.example.fishsnap.databinding.ListFishBinding
 
-class CarouselAdapter(private val images: List<String>,  private val onItemClick: (String) -> Unit) : RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
+class CarouselAdapter(private val items: List<CarouselItem>,  private val onItemClick: (CarouselItem) -> Unit) : RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 
     inner class CarouselViewHolder(private val binding: ListFishBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(imageUrl: String) {
+        fun bind(item: CarouselItem) {
             with(binding) {
                 Glide.with(carouselImageView.context)
-                    .load(imageUrl)
+                    .load(item.imageUrl)
                     .transform(RoundedCorners(8)) // Apply rounded corners transformation
                     .into(carouselImageView)
-                carouselTextView.text = "Dummy Ikan" // Update text based on position
-                root.setOnClickListener { onItemClick(imageUrl) }
+                carouselTextView.text = item.title// Update text based on position
+                root.setOnClickListener { onItemClick(item) }
             }
         }
     }
@@ -29,11 +30,11 @@ class CarouselAdapter(private val images: List<String>,  private val onItemClick
     }
 
     override fun getItemCount(): Int {
-        return images.size
+        return items.size
     }
 
     override fun onBindViewHolder(holder: CarouselViewHolder, position: Int) {
-        holder.bind(images[position])
+        holder.bind(items[position])
     }
 
 }
