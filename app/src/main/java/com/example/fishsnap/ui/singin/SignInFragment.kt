@@ -3,6 +3,8 @@ package com.example.fishsnap.ui.singin
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,7 +62,12 @@ class SignInFragment : Fragment() {
             val email = binding.emailEditTextLayout.text.toString().trim()
             val password = binding.passwordEditText.text.toString().trim()
 
-            viewModel.loginUser(email, password)
+            showLoading(true)
+//            viewModel.loginUser(email, password)
+            // Add a delay of 2 seconds before executing ViewModel's loginUser method
+            Handler(Looper.getMainLooper()).postDelayed({
+                viewModel.loginUser(email, password)
+            }, 2000)
         }
 
         binding.tvForgotPassword.setOnClickListener {
@@ -68,6 +75,7 @@ class SignInFragment : Fragment() {
         }
 
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer { response ->
+            showLoading(false)
             if (response.isSuccessful) {
                 Toast.makeText(requireContext(), "Login Berhasil!", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
@@ -77,8 +85,17 @@ class SignInFragment : Fragment() {
         })
 
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
+            showLoading(false)
             Toast.makeText(requireContext(), "User belum terdaftar", Toast.LENGTH_SHORT).show()
         })
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingButton.root.visibility = View.VISIBLE
+        } else {
+            binding.loadingButton.root.visibility = View.GONE
+        }
     }
 
     override fun onDestroyView() {

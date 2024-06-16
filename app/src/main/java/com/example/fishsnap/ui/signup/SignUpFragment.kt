@@ -3,6 +3,8 @@ package com.example.fishsnap.ui.signup
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -73,20 +75,28 @@ class SignUpFragment : Fragment() {
         confirmPasswordEditText.passwordTextField = passwordEditText
 
         binding.btnSignUp.setOnClickListener {
-            val name = binding.nameTextInputLayout.text.toString().trim()
-            val username = binding.usernameTextInputLayout.text.toString().trim()
-            val email = binding.emailEditTextLayout.text.toString().trim()
-            val password = binding.passwordEditText.text.toString().trim()
-            val confirmPassword = binding.confirmPasswordEditText.text.toString().trim()
+            showLoading(true)
+                val name = binding.nameTextInputLayout.text.toString().trim()
+                val username = binding.usernameTextInputLayout.text.toString().trim()
+                val email = binding.emailEditTextLayout.text.toString().trim()
+                val password = binding.passwordEditText.text.toString().trim()
+                val confirmPassword = binding.confirmPasswordEditText.text.toString().trim()
 
-            if (password == confirmPassword) {
-                viewModel.registerUser(name, username, email, password)
-            } else {
-                Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
-            }
+                if (password == confirmPassword) {
+                    viewModel.registerUser(name, username, email, password)
+                } else {
+                    showLoading(false)
+                    Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
+                }
         }
 
+        // TO DO
+        //bad logic pengecekan field kosong
+        //bad logic user telah terdaftar
+
+        Handler(Looper.getMainLooper()).postDelayed({
         viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
+            showLoading(false)
             if (response.isSuccessful) {
                 Toast.makeText(requireContext(), "Registrasi Berhasil! Silahkan lakukan verifikasi diemail anda", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
@@ -94,10 +104,21 @@ class SignUpFragment : Fragment() {
                 Toast.makeText(requireContext(), "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
             }
         })
+        }, 2000)
+
 
         viewModel.errorMessage.observe(viewLifecycleOwner, Observer { message ->
+            showLoading(false)
             Toast.makeText(requireContext(), "User Telah Terdaftar", Toast.LENGTH_SHORT).show()
         })
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingButton.root.visibility = View.VISIBLE
+        } else {
+            binding.loadingButton.root.visibility = View.GONE
+        }
     }
 
     private fun Fragment.resetStatusBarColor() {
