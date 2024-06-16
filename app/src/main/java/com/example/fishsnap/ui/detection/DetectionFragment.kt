@@ -108,6 +108,8 @@ class DetectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.clearErrorMessage()
+
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().popBackStack()
@@ -148,13 +150,16 @@ class DetectionFragment : Fragment() {
                     findNavController().navigate(action)
                 }
             } else {
-                Toast.makeText(requireContext(), "Error: ${response.message()}", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(requireContext(), "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
             }
         }
 
         viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            message?.let {
+                if (it.isNotEmpty()) {
+                    Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -170,12 +175,15 @@ class DetectionFragment : Fragment() {
         val (_, confidence) = fishDetectionModel.detectFish(imageBitmap)
         val bitmapWithBoundingBox = fishDetectionModel.drawBoundingBox(imageBitmap, confidence)
 
-        // Display the annotated image
-        binding.previewImageView.setImageBitmap(bitmapWithBoundingBox)
-
-        // Save the annotated image and update urlImg with its path
-        val annotatedImagePath = saveBitmap(bitmapWithBoundingBox)
-        updateUrlImg(file, annotatedImagePath)
+        // Display the annotated image if fish is detected
+        if (confidence > 0.5) { // assuming 0.5 as threshold for detection
+            binding.previewImageView.setImageBitmap(bitmapWithBoundingBox)
+            // Save the annotated image and update urlImg with its path
+            val annotatedImagePath = saveBitmap(bitmapWithBoundingBox)
+            updateUrlImg(file, annotatedImagePath)
+        } else {
+            Toast.makeText(requireContext(), "Ikan tidak terdeteksi", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun saveBitmap(bitmap: Bitmap): String {
@@ -195,67 +203,6 @@ class DetectionFragment : Fragment() {
         viewModel.scanFish(body, "Bearer $token", annotatedImagePath)
     }
 
-
-//    private fun analyzeImage(uri: Uri) {
-//        val path = getPathFromUri(requireContext(), uri)
-//        val file = File(path)
-//        if (!file.exists()) {
-//            Toast.makeText(requireContext(), "File does not exist", Toast.LENGTH_SHORT).show()
-//            return
-//        }
-//        val imageBitmap = BitmapFactory.decodeFile(path)
-//        val fishDetectionModel = FishDetectionModel(requireContext())
-//        val (label, confidence) = fishDetectionModel.detectFish(imageBitmap)
-//        val bitmapWithBoundingBox = fishDetectionModel.drawBoundingBox(imageBitmap, confidence)
-//
-//        // Display the annotated image
-//        binding.previewImageView.setImageBitmap(bitmapWithBoundingBox)
-//
-//        // Save the annotated image and update urlImg with its path
-//        val annotatedImagePath = saveBitmap(bitmapWithBoundingBox)
-//        uploadImage(file, annotatedImagePath)
-//    }
-//
-//    private fun saveBitmap(bitmap: Bitmap): String {
-//        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
-//        val fileName = "IMG_$timeStamp.jpg"
-//        val file = File(requireContext().filesDir, fileName)
-//        FileOutputStream(file).use { out ->
-//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
-//        }
-//        return file.absolutePath
-//    }
-//
-//    private fun uploadImage(originalFile: File, annotatedImagePath: String) {
-//        val token = sharedPreferences.getString("TOKEN", "") ?: return
-//        val requestFile = originalFile.asRequestBody("image/*".toMediaTypeOrNull())
-//        val body = MultipartBody.Part.createFormData("file", originalFile.name, requestFile)
-//        viewModel.scanFish(body, "Bearer $token", annotatedImagePath)
-//    }
-
-
-
-//        val imageBitmap = BitmapFactory.decodeFile(path)
-//        val fishDetectionModel = FishDetectionModel(requireContext())
-//        val (label, confidence) = fishDetectionModel.detectFish(imageBitmap)
-//
-//        // Create a FishScanResponse with TensorFlow Lite result and pass it to DetailFishFragment
-//        val fishScanResponse = FishScanResponse(
-//            id = "local-id",
-//            idUser = "local-user",
-//            codeFishModel = label,
-//            name = label,
-//            scientificName = "N/A",
-//            urlImg = uri.toString(),
-//            otherNames = listOf(),
-//            description = listOf("Detected with confidence: ${confidence * 100}%"),
-//            productRecipe = listOf(),
-//            location = listOf()
-//        )
-//        val action = DetectionFragmentDirections.actionDetectionFragmentToDetailFishFragment(fishScanResponse)
-//        findNavController().navigate(action)
-//    }
-
     private fun getPathFromUri(context: Context, uri: Uri): String {
         var filePath: String? = null
         val cursor = context.contentResolver.query(uri, null, null, null, null)
@@ -270,24 +217,10 @@ class DetectionFragment : Fragment() {
         return filePath ?: uri.path!!
     }
 
-//    private fun saveBitmap(bitmap: Bitmap): String {
-//        val timeStamp = System.currentTimeMillis()
-//        val file = File(requireContext().cacheDir, "detected_image_$timeStamp.jpg")
-//        val out = FileOutputStream(file)
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
-//        out.flush()
-//        out.close()
-//        return file.absolutePath
-//    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-//    companion object {
-//        private const val REQUEST_GALLERY = 1001
-//        private const val REQUEST_CAMERA = 1002
-//    }
 }
+
 

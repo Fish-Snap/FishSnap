@@ -62,12 +62,21 @@ class SignInFragment : Fragment() {
             val email = binding.emailEditTextLayout.text.toString().trim()
             val password = binding.passwordEditText.text.toString().trim()
 
-            showLoading(true)
-//            viewModel.loginUser(email, password)
-            // Add a delay of 2 seconds before executing ViewModel's loginUser method
-            Handler(Looper.getMainLooper()).postDelayed({
-                viewModel.loginUser(email, password)
-            }, 2000)
+            var isValid = true
+
+            if (email.isEmpty() || password.isEmpty()) {
+                binding.emailEditTextLayout.error = "Field tidak boleh kosong"
+                binding.edtPassword.error = "Field tidak boleh kosong"
+                binding.edtPassword.errorIconDrawable = null
+                isValid = false
+                Toast.makeText(requireContext(), "Semua field harus diisi", Toast.LENGTH_SHORT).show()
+                showLoading(false)
+            }else{
+                showLoading(true)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    viewModel.loginUser(email, password)
+                }, 2000)
+            }
         }
 
         binding.tvForgotPassword.setOnClickListener {
@@ -80,7 +89,7 @@ class SignInFragment : Fragment() {
                 Toast.makeText(requireContext(), "Login Berhasil!", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
             } else {
-                Toast.makeText(requireContext(), "Login failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Login gagal : ${response.message()}", Toast.LENGTH_SHORT).show()
             }
         })
 

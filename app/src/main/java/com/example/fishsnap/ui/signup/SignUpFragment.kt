@@ -82,17 +82,26 @@ class SignUpFragment : Fragment() {
                 val password = binding.passwordEditText.text.toString().trim()
                 val confirmPassword = binding.confirmPasswordEditText.text.toString().trim()
 
-                if (password == confirmPassword) {
-                    viewModel.registerUser(name, username, email, password)
-                } else {
+                var isValid = true
+
+                if (name.isEmpty() || username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                    binding.nameTextInputLayout.error = "Field tidak boleh kosong"
+                    binding.usernameTextInputLayout.error = "Field tidak boleh kosong"
+                    binding.emailEditTextLayout.error = "Field tidak boleh kosong"
+                    binding.passwordTextInputLayout.error = "Field tidak boleh kosong"
+                    binding.passwordTextInputLayout.errorIconDrawable = null
+                    binding.confirmPasswordTextInputLayout.error = "Field tidak boleh kosong"
+                    binding.confirmPasswordTextInputLayout.errorIconDrawable = null
+                    isValid = false
+                    Toast.makeText(requireContext(), "Semua field harus diisi", Toast.LENGTH_SHORT).show()
                     showLoading(false)
-                    Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
+                }else if (password != confirmPassword) {
+                    showLoading(false)
+                    Toast.makeText(requireContext(), "Kata sandi tidak sama", Toast.LENGTH_SHORT).show()
+                }else {
+                    viewModel.registerUser(name, username, email, password)
                 }
         }
-
-        // TO DO
-        //bad logic pengecekan field kosong
-        //bad logic user telah terdaftar
 
         Handler(Looper.getMainLooper()).postDelayed({
         viewModel.registerResponse.observe(viewLifecycleOwner, Observer { response ->
@@ -101,7 +110,7 @@ class SignUpFragment : Fragment() {
                 Toast.makeText(requireContext(), "Registrasi Berhasil! Silahkan lakukan verifikasi diemail anda", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
             } else {
-                Toast.makeText(requireContext(), "Registration failed: ${response.message()}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Registrasi gagal : ${response.message()}", Toast.LENGTH_SHORT).show()
             }
         })
         }, 2000)

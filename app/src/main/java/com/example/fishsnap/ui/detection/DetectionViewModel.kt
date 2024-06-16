@@ -25,7 +25,6 @@ class DetectionViewModel(private val repository: FishRepository, private val sha
             try {
                 val response = repository.scanFish(file, token, annotatedImagePath)
                 if (response.isSuccessful) {
-                    // Update the response to include the annotated image path
                     val fishScanResponse = response.body()?.data
                     fishScanResponse?.let {
                         it.urlImg = annotatedImagePath // Update urlImg with the path of the annotated image
@@ -33,12 +32,16 @@ class DetectionViewModel(private val repository: FishRepository, private val sha
                     scanResponse.postValue(response)
                 } else {
                     Log.e("DetectionViewModel", "Scan failed: Ikan tidak terdeteksi")
-                    errorMessage.postValue("Scan failed: Ikan tidak terdeteksi")
+                    errorMessage.postValue("Ikan tidak terdeteksi")
                 }
             } catch (e: Exception) {
                 Log.e("DetectionViewModel", "An unexpected error occurred: ${e.localizedMessage}", e)
-                errorMessage.postValue("An unexpected error occurred: ${e.localizedMessage}")
+                errorMessage.postValue("Terjadi kesalahan yang tidak terduga: ${e.localizedMessage}")
             }
         }
+    }
+
+    fun clearErrorMessage() {
+        errorMessage.value = null
     }
 }

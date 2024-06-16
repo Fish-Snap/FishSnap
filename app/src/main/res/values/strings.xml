@@ -21,7 +21,7 @@
     <string name="error_password">Password harus melebihi 8 karakter</string>
     <string name="background_image">Gambar Latar</string>
     <string name="enter_your_account_to_login">Masukkan akun anda untuk masuk ke aplikasi</string>
-    <string name="password">Sandi</string>
+    <string name="password">Kata Sandi</string>
     <string name="username">Nama Pengguna</string>
     <string name="detection_image">Deteksi Gambar</string>
     <string name="image_preview">Pratinjau Gambar</string>
@@ -39,7 +39,7 @@
     <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="btn_change_password">Ubah Kata Sandi</string>
     <string name="txt_email">Email</string>
-    <string name="txt_password">Sandi</string>
+    <string name="txt_password">Kata Sandi</string>
     <string name="txt_new_password">Kata Sandi Baru</string>
     <string name="txt_confirm_password">Konfirmasi Kata Sandi</string>
     <string name="tf_useremail_gmail_com">UserEmail@gmail.com</string>
@@ -95,4 +95,6 @@
     <string name="_7_kewajiban_pengguna">7. Kewajiban Pengguna</string>
     <string name="content_7_terms">Penggunaan aplikasi ini merupakan penerimaan sepenuhnya terhadap syarat dan ketentuan ini. Pengguna bertanggung jawab atas keamanan dan kerahasiaan akun mereka sendiri.</string>
     <string name="thanks_terms">Terima kasih telah menggunakan Fish Snap. Dengan mendaftar dan menggunakan aplikasi ini, Anda dianggap telah menyetujui syarat dan ketentuan ini sepenuhnya. Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi tim dukungan kami. Selamat menikmati pengalaman menjelajahi dunia ikan bersama Fish Snap! 🐟</string>
+    <string name="tf_nama_register">DiCoding Indonesia</string>
+    <string name="tf_username_register">DiCoding123</string>
 </resources>

@@ -90,13 +90,13 @@ class ChangePasswordFragment : Fragment() {
             }
 
             if (!isValid) {
-                Snackbar.make(binding.root, "Fields cannot be empty", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "Fields tidak boleh kosong", Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             // Check if new password length is less than 8 characters
             if (newPassword.length < 8) {
-                binding.passwordTextInputLayout.error = "Password harus lebih dari 8 karakter"
+                binding.passwordTextInputLayout.error = "Kata Sandi harus lebih dari 8 karakter"
                 binding.passwordTextInputLayout.errorIconDrawable = null
                 binding.passwordTextInputLayout.endIconMode = com.google.android.material.textfield.TextInputLayout.END_ICON_PASSWORD_TOGGLE
                 return@setOnClickListener
@@ -106,7 +106,7 @@ class ChangePasswordFragment : Fragment() {
 
             // Check if new password and confirm password do not match
             if (newPassword != confirmPassword) {
-                binding.confirmPasswordTextInputLayout.error = "Passwords Harus Sama!!!"
+                binding.confirmPasswordTextInputLayout.error = "kata Sandi Harus Sama!!!"
                 binding.confirmPasswordTextInputLayout.errorIconDrawable = null
                 binding.confirmPasswordTextInputLayout.endIconMode = com.google.android.material.textfield.TextInputLayout.END_ICON_PASSWORD_TOGGLE
                 return@setOnClickListener
@@ -130,7 +130,7 @@ class ChangePasswordFragment : Fragment() {
             } else {
                 Snackbar.make(
                     binding.root,
-                    viewModel.errorMessage.value ?: "Password change failed",
+                    viewModel.errorMessage.value ?: "Kata Sandi gagal Diubah",
                     Snackbar.LENGTH_SHORT
                 ).show()
             }
@@ -139,7 +139,7 @@ class ChangePasswordFragment : Fragment() {
 
     private fun showSuccessDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Password Changed")
+            .setTitle("Kata Sandi Berhasil Diubah")
             .setMessage("Password anda berhasil diganti, silahkan login ulang.")
             .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
