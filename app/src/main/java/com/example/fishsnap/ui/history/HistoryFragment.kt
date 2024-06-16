@@ -14,6 +14,7 @@ import com.example.fishsnap.adapter.historyAdapter.HistoryAdapter
 import com.example.fishsnap.auth.ApiClient
 import com.example.fishsnap.databinding.FragmentHistoryBinding
 import com.example.fishsnap.ui.ViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 
 class HistoryFragment : Fragment() {
     private var _binding: FragmentHistoryBinding? = null
@@ -53,6 +54,10 @@ class HistoryFragment : Fragment() {
             adapter = historyAdapter
         }
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.loadHistory()
+        }
+
         viewModel.historyData.observe(viewLifecycleOwner) { historyList ->
             if (historyList.isEmpty()) {
                 binding.handleImage.visibility = View.VISIBLE
@@ -68,6 +73,12 @@ class HistoryFragment : Fragment() {
                 findNavController().navigate(action)
             }
             binding.recyclerHistory.adapter = historyAdapter
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
+        viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
+            Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
+            binding.swipeRefreshLayout.isRefreshing = false
         }
 
         viewModel.loadHistory()
@@ -78,4 +89,3 @@ class HistoryFragment : Fragment() {
         _binding = null
     }
 }
-

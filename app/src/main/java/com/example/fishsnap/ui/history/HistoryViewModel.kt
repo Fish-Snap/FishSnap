@@ -34,4 +34,3 @@ class HistoryViewModel(private val sharedPreferences: SharedPreferences) : ViewM
         }
     }
 }
-
