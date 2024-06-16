@@ -42,7 +42,7 @@ class NewsAdapter(private val context: Context, private var newsList: List<NewsI
 
         fun bind(newsItem: NewsItem) {
             binding.tvTitleNews.text = newsItem.title
-            binding.tvDescriptionNews.text = newsItem.content.joinToString("\n")
+            binding.tvDescriptionNews.text = newsItem.content
             binding.tvAuthorNews.text = newsItem.nameAuthor
             binding.tvDateNews.text = newsItem.publicationAt
 

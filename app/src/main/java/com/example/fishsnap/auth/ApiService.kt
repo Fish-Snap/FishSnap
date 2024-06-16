@@ -39,7 +39,7 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Response<ApiResponse<List<FishScanResponse>>>
 
-    @GET("news/current-day")
+    @GET("news")
     suspend fun getNews(
         @Header("Authorization") token: String
     ): Response<ApiResponse<List<NewsItem>>>
