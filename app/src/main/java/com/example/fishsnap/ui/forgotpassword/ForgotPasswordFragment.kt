@@ -35,9 +35,7 @@ class ForgotPasswordFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.window?.statusBarColor =  ContextCompat.getColor(requireContext(),
-            R.color.darkGreen
-        )
+        activity?.window?.statusBarColor =  ContextCompat.getColor(requireContext(), R.color.darkGreen)
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = false
     }
@@ -57,13 +55,14 @@ class ForgotPasswordFragment : Fragment() {
             val email = binding.emailEditTextLayout.text.toString().trim()
 
             if (email.isEmpty()) {
-                Snackbar.make(binding.root, "Email cannot be empty", Snackbar.LENGTH_SHORT).show()
-                return@setOnClickListener
+                binding.emailEditTextLayout.error = "Field tidak boleh kosong"
+                Snackbar.make(binding.root, "Email tidak boleh kosong", Snackbar.LENGTH_SHORT).show()
+            } else {
+                showLoading(true)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    viewModel.forgotPassword(email)
+                }, 2000)
             }
-            showLoading(true)
-            Handler(Looper.getMainLooper()).postDelayed({
-            viewModel.forgotPassword(email)
-            }, 2000)
         }
 
         viewModel.successMessage.observe(viewLifecycleOwner) { message ->
@@ -79,11 +78,7 @@ class ForgotPasswordFragment : Fragment() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.loadingButton.root.visibility = View.VISIBLE
-        } else {
-            binding.loadingButton.root.visibility = View.GONE
-        }
+        binding.loadingButton.root.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
