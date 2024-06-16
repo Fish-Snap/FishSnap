@@ -81,10 +81,8 @@ class SignInFragment : Fragment() {
                 showLoading(true)
                 Handler(Looper.getMainLooper()).postDelayed({
                     viewModel.loginUser(email, password)
-                }, 2000)
-                Handler(Looper.getMainLooper()).postDelayed({
                     resetStatusBarColor()
-                }, 5000)
+                }, 2000)
             }
         }
 
@@ -130,8 +128,6 @@ class SignInFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-//        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), android.R.color.white)
-//        WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = true
         _binding = null
     }
 }
