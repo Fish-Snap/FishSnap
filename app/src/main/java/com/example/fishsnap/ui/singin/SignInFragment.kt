@@ -38,9 +38,13 @@ class SignInFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.darkGreen)
+        activity?.window?.statusBarColor =
+            ContextCompat.getColor(requireContext(), R.color.darkGreen)
         activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = false
+        WindowCompat.getInsetsController(
+            requireActivity().window,
+            requireActivity().window.decorView
+        ).isAppearanceLightStatusBars = false
     }
 
     override fun onCreateView(
@@ -56,6 +60,7 @@ class SignInFragment : Fragment() {
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
+            resetStatusBarColor()
         }
 
         binding.btnSignIn.setOnClickListener {
@@ -69,13 +74,17 @@ class SignInFragment : Fragment() {
                 binding.edtPassword.error = "Field tidak boleh kosong"
                 binding.edtPassword.errorIconDrawable = null
                 isValid = false
-                Toast.makeText(requireContext(), "Semua field harus diisi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Semua field harus diisi", Toast.LENGTH_SHORT)
+                    .show()
                 showLoading(false)
-            }else{
+            } else {
                 showLoading(true)
                 Handler(Looper.getMainLooper()).postDelayed({
                     viewModel.loginUser(email, password)
                 }, 2000)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    resetStatusBarColor()
+                }, 5000)
             }
         }
 
@@ -89,7 +98,11 @@ class SignInFragment : Fragment() {
                 Toast.makeText(requireContext(), "Login Berhasil!", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
             } else {
-                Toast.makeText(requireContext(), "Login gagal : ${response.message()}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Login gagal : ${response.message()}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         })
 
@@ -107,10 +120,18 @@ class SignInFragment : Fragment() {
         }
     }
 
+    private fun Fragment.resetStatusBarColor() {
+        activity?.window?.statusBarColor = Color.WHITE
+        WindowCompat.getInsetsController(
+            requireActivity().window,
+            requireActivity().window.decorView
+        ).isAppearanceLightStatusBars = true
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), android.R.color.white)
-        WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = true
+//        activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), android.R.color.white)
+//        WindowCompat.getInsetsController(requireActivity().window, requireActivity().window.decorView).isAppearanceLightStatusBars = true
         _binding = null
     }
 }
