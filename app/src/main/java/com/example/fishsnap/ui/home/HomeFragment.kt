@@ -3,23 +3,19 @@ package com.example.fishsnap.ui.home
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.fishsnap.R
 import com.example.fishsnap.adapter.carouselAdapter.CarouselAdapter
 import com.example.fishsnap.adapter.newsAdapter.NewsAdapter
-import com.example.fishsnap.auth.ApiClient
 import com.example.fishsnap.data.dummy.CarouselItem
-import com.example.fishsnap.data.dummy.DummyItemsNews
 import com.example.fishsnap.databinding.FragmentHomeBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.carousel.CarouselLayoutManager
@@ -27,7 +23,6 @@ import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.HeroCarouselStrategy
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -130,7 +125,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun getCarouselItems(): List<CarouselItem> {
-        val json = requireContext().assets.open("carouselDummyItem.json").bufferedReader().use {
+        val inputStream = requireContext().resources.openRawResource(R.raw.dummy_item)
+        val json = inputStream.bufferedReader().use {
             it.readText()
         }
         val listType = object : TypeToken<List<CarouselItem>>() {}.type

@@ -65,10 +65,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:ems="4"
             android:textAppearance="?attr/textAppearanceCaption"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_descriptionNews"
-            tools:text="@tools:sample/lorem" />
+            tools:text="@tools:sample/full_names" />
 
         <TextView
             android:id="@+id/tv_dateNews"

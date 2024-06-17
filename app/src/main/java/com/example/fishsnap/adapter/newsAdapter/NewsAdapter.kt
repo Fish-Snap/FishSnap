@@ -5,18 +5,17 @@ import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
-import com.example.fishsnap.ui.home.HomeFragmentDirections
 import com.example.fishsnap.auth.NewsItem
-import com.example.fishsnap.data.dummy.DummyItemsNews
 import com.example.fishsnap.databinding.ListNewsBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
+import kotlin.random.Random
 
 class NewsAdapter(private val context: Context, private var newsList: List<NewsItem>) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
@@ -50,9 +49,14 @@ class NewsAdapter(private val context: Context, private var newsList: List<NewsI
             binding.tvDateNews.text = formatDate(newsItem.publicationAt)
 
             // Use Glide to load images
+            val randomHeight = Random.nextInt(150, 300) // Random height between 150dp and 300dp
+            binding.ivItemNews.updateLayoutParams<ViewGroup.LayoutParams> {
+                height = (randomHeight * context.resources.displayMetrics.density).toInt() // Convert dp to pixels
+            }
+
             Glide.with(context)
                 .load(newsItem.urlThumbImg)
-                .apply(RequestOptions().transform(RoundedCorners(60)))
+                .transform(CenterCrop(), RoundedCorners(16))
                 .into(binding.ivItemNews)
 
             // Set click listener
