@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.fishsnap.R
 import com.example.fishsnap.auth.ProductRecipe
 import com.example.fishsnap.databinding.FragmentDetailRecipeBinding
@@ -48,8 +50,9 @@ class DetailRecipeFragment : Fragment() {
         with(binding) {
             recipeNameTextView.text = recipe.name
             recipeDescriptionTextView.text = recipe.description
-            Glide.with(this@DetailRecipeFragment)
+            Glide.with(recipeImageView.context)
                 .load(recipe.urlImg)
+                .transform(CenterCrop(), RoundedCorners(16))
                 .into(recipeImageView)
 
             ingredientsTextView.text = recipe.material.joinToString("\n") { "- $it" }

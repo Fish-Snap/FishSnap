@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.FitCenter
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.fishsnap.R
 import com.example.fishsnap.adapter.foodAdapter.LocationAdapter
 import com.example.fishsnap.adapter.foodAdapter.RecommendationAdapter
@@ -63,6 +66,7 @@ class DetailFishFragment : Fragment() {
 
             Glide.with(this@DetailFishFragment)
                 .load(fishScanResponse.urlImg)
+                .transform(FitCenter(), RoundedCorners(16))
                 .into(annotatedImageView)
         }
     }
