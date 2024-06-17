@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingVertical="16dp">
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Tips Foto"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@color/darkBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/topImage"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="false"
+        android:contentDescription="Top Image"
+        android:scaleType="centerCrop"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialogTitle"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/ivCheck"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="2dp"
+        android:src="@drawable/check_circle_"
+        app:layout_constraintBottom_toBottomOf="@+id/topImage"
+        app:layout_constraintEnd_toEndOf="@+id/topImage" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        app:dividerColor="@color/darkBlue"
+        app:layout_constraintTop_toBottomOf="@+id/topImage"/>
+
+    <TextView
+        android:id="@+id/topImageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:text="Berikut ini akan menghasilkan hasil yang buruk."
+        android:textColor="@color/darkBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topImage" />
+
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="false"
+        android:contentDescription="Image 1"
+        android:scaleType="centerCrop"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toStartOf="@id/image2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topImageText"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="2dp"
+        android:src="@drawable/close_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/image1"
+        app:layout_constraintEnd_toEndOf="@+id/image1" />
+
+    <TextView
+        android:id="@+id/image1Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Terlalu jauh."
+        android:textColor="@color/darkBlue"
+        app:layout_constraintEnd_toEndOf="@id/image1"
+        app:layout_constraintStart_toStartOf="@id/image1"
+        app:layout_constraintTop_toBottomOf="@id/image1" />
+
+    <ImageView
+        android:id="@+id/image2"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="false"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Image 2"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image1"
+        app:layout_constraintTop_toBottomOf="@id/topImageText"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="2dp"
+        android:src="@drawable/close_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/image2"
+        app:layout_constraintEnd_toEndOf="@+id/image2" />
+
+    <TextView
+        android:id="@+id/image2Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Sudut yang buruk."
+        android:textColor="@color/darkBlue"
+        app:layout_constraintEnd_toEndOf="@id/image2"
+        app:layout_constraintStart_toStartOf="@id/image2"
+        app:layout_constraintTop_toBottomOf="@id/image2" />
+
+    <ImageView
+        android:id="@+id/image3"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="false"
+        android:contentDescription="Image 3"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@id/image4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image1Text"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="2dp"
+        android:src="@drawable/close_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/image3"
+        app:layout_constraintEnd_toEndOf="@+id/image3" />
+
+    <TextView
+        android:id="@+id/image3Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Blur."
+        android:textColor="@color/darkBlue"
+        app:layout_constraintEnd_toEndOf="@id/image3"
+        app:layout_constraintStart_toStartOf="@id/image3"
+        app:layout_constraintTop_toBottomOf="@id/image3" />
+
+    <ImageView
+        android:id="@+id/image4"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="false"
+        android:contentDescription="Image 4"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image3"
+        app:layout_constraintTop_toBottomOf="@id/image2Text"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="2dp"
+        android:src="@drawable/close_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/image4"
+        app:layout_constraintEnd_toEndOf="@+id/image4" />
+
+    <TextView
+        android:id="@+id/image4Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Beberapa spesies."
+        android:textColor="@color/darkBlue"
+        app:layout_constraintEnd_toEndOf="@id/image4"
+        app:layout_constraintStart_toStartOf="@id/image4"
+        app:layout_constraintTop_toBottomOf="@id/image4" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_Ok"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/darkBlue"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/understand"
+        android:textSize="18sp"
+        app:cornerRadius="10dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image4Text"
+        tools:ignore="VisualLintButtonSize" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

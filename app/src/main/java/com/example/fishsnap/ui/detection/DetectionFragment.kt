@@ -21,13 +21,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.example.fishsnap.R
 import com.example.fishsnap.auth.ApiClient
+import com.example.fishsnap.databinding.DialogTipsBinding
 import com.example.fishsnap.databinding.FragmentDetectionBinding
 import com.example.fishsnap.ui.ViewModelFactory
 import com.example.fishsnap.utils.FishDetectionModel
 import com.example.fishsnap.utils.getImageUri
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.yalantis.ucrop.UCrop
+import jp.wasabeef.glide.transformations.BlurTransformation
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -132,6 +137,14 @@ class DetectionFragment : Fragment() {
             launchCamera.launch(currentUri)
         }
 
+        binding.tvTips.setOnClickListener {
+            showCustomDialog()
+        }
+
+        binding.ivInfo.setOnClickListener {
+            showCustomDialog()
+        }
+
         binding.btnAnalyze.setOnClickListener {
             showLoading(true)
             selectedImageUri?.let { uri ->
@@ -166,6 +179,46 @@ class DetectionFragment : Fragment() {
                     Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
                 }
             }
+        }
+    }
+
+    private fun showCustomDialog() {
+        val binding = DialogTipsBinding.inflate(LayoutInflater.from(requireContext()))
+
+        val dialog = MaterialAlertDialogBuilder(requireContext(), R.style.DialogAnimation)
+            .setView(binding.root)
+            .setCancelable(true)
+            .create()
+
+        dialog.show()
+
+        Glide.with(binding.topImage.context)
+            .load(R.drawable.perfect_fish)
+            .transform(CenterCrop(), RoundedCorners(8))
+            .into(binding.topImage)
+
+        Glide.with(this)
+            .load(R.drawable.to_far_fish)
+            .transform(CenterCrop(), RoundedCorners(8))
+            .into(binding.image1)
+
+        Glide.with(this)
+            .load(R.drawable.bad_angle_fish)
+            .transform(CenterCrop(), RoundedCorners(8))
+            .into(binding.image2)
+
+        Glide.with(this)
+            .load(R.drawable.perfect_fish)
+            .transform(BlurTransformation(10, 1), CenterCrop(), RoundedCorners(8))
+            .into(binding.image3)
+
+        Glide.with(this)
+            .load(R.drawable.multiple_species_fish)
+            .transform(CenterCrop(), RoundedCorners(8))
+            .into(binding.image4)
+
+        binding.btnOk.setOnClickListener {
+            dialog.dismiss()
         }
     }
 
