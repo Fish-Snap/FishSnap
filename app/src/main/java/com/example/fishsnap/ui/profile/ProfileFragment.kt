@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.fishsnap.R
 import com.example.fishsnap.databinding.DialogLogoutBinding
 import com.example.fishsnap.databinding.FragmentProfileBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -66,20 +67,21 @@ class ProfileFragment : Fragment() {
     }
 
     private fun showLogoutDialog() {
-        val dialogBinding = DialogLogoutBinding.inflate(layoutInflater)
+        val binding = DialogLogoutBinding.inflate(layoutInflater)
 
-        val dialog = AlertDialog.Builder(requireContext())
-            .setView(dialogBinding.root)
+        val dialog =  MaterialAlertDialogBuilder(requireContext(), R.style.DialogAnimation)
+            .setView(binding.root)
+            .setCancelable(true)
             .create()
 
-        "Logout".also { dialogBinding.tvTitle.text = it }
-        "Anda yakin ingin keluar?".also { dialogBinding.tvMessage.text = it }
+        "Logout".also { binding.tvTitle.text = it }
+        "Anda yakin ingin keluar?".also { binding.tvMessage.text = it }
 
-        dialogBinding.btnNo.setOnClickListener {
+        binding.btnNo.setOnClickListener {
             dialog.dismiss()
         }
 
-        dialogBinding.btnYes.setOnClickListener {
+        binding.btnYes.setOnClickListener {
             val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
             with(sharedPreferences.edit()) {
                 clear()
