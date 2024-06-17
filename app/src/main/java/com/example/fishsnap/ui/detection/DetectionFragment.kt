@@ -142,7 +142,6 @@ class DetectionFragment : Fragment() {
             }
         }
 
-        Handler(Looper.getMainLooper()).postDelayed({
         viewModel.scanResponse.observe(viewLifecycleOwner) { response ->
             showLoading(false)
             if (response.isSuccessful) {
@@ -168,7 +167,6 @@ class DetectionFragment : Fragment() {
                 }
             }
         }
-        }, 2000)
     }
 
     private fun analyzeImage(uri: Uri) {
