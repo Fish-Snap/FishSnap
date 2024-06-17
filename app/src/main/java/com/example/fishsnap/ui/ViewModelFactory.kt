@@ -11,6 +11,7 @@ import com.example.fishsnap.ui.history.HistoryViewModel
 import com.example.fishsnap.ui.signup.SignUpViewModel
 import com.example.fishsnap.ui.singin.SignInViewModel
 
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactory(
     private val apiService: ApiService,
     private val sharedPreferences: SharedPreferences

@@ -123,8 +123,8 @@ class HomeFragment : Fragment() {
         carouselRecyclerView.layoutManager = carouselLayoutManager
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
         val carouselItem = getCarouselItems()
-        carouselRecyclerView.adapter = CarouselAdapter(carouselItem) { carouselItem ->
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailCarouselFragment(carouselItem)
+        carouselRecyclerView.adapter = CarouselAdapter(carouselItem) { carouselItems ->
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailCarouselFragment(carouselItems)
             findNavController().navigate(action)
         }
     }
@@ -136,54 +136,6 @@ class HomeFragment : Fragment() {
         val listType = object : TypeToken<List<CarouselItem>>() {}.type
         return Gson().fromJson(json, listType)
     }
-
-//
-//    private fun getDummyNewsItems(): MutableList<DummyItemsNews> {
-//        return mutableListOf(
-//            DummyItemsNews(
-//                title = "Title 1",
-//                description = "Description 1",
-//                author = "Author 1",
-//                date = "Date 1",
-//                imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
-//            ),
-//            DummyItemsNews(
-//                title = "Title 2",
-//                description = "Description 2",
-//                author = "Author 2",
-//                date = "Date 2",
-//                imageUrl = "https://i.pinimg.com/564x/06/6f/b2/066fb2bd6a2f623a340239ed25db389d.jpg"
-//            ),
-//            DummyItemsNews(
-//                title = "Title 3",
-//                description = "Description 3",
-//                author = "Author 3",
-//                date = "Date 3",
-//                imageUrl = "https://i.pinimg.com/564x/aa/48/fe/aa48fe1ed1162094d329a1cbe720bf8c.jpg"
-//            ),
-//            DummyItemsNews(
-//                title = "Title 4",
-//                description = "Description 4",
-//                author = "Author 4",
-//                date = "Date 4",
-//                imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
-//            ),
-//            DummyItemsNews(
-//                title = "Title 5",
-//                description = "Description 5",
-//                author = "Author 5",
-//                date = "Date 5",
-//                imageUrl = "https://i.pinimg.com/564x/95/68/6a/95686a79fda78c1d70ca6bbc09587977.jpg"
-//            ),
-//            DummyItemsNews(
-//                title = "Title 6",
-//                description = "Description 5",
-//                author = "Author 5",
-//                date = "Date 5",
-//                imageUrl = "https://i.pinimg.com/564x/67/9c/dc/679cdc274ea67a113a9cd98ef61ec894.jpg"
-//            ),
-//        )
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

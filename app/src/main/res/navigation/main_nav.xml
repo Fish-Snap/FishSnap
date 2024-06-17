@@ -152,11 +152,6 @@
             android:name="carouselItem"
             app:argType="com.example.fishsnap.data.dummy.CarouselItem" />
     </fragment>
-    <fragment
-        android:id="@+id/detailHistoryFragment"
-        android:name="com.example.fishsnap.DetailHistoryFragment"
-        android:label="fragment_detail_history"
-        tools:layout="@layout/fragment_detail_history" />
 
     <fragment
         android:id="@+id/detailRecipeFragment"
