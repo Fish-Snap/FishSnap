@@ -87,7 +87,6 @@ class SignInFragment : Fragment() {
                 showLoading(true)
                 Handler(Looper.getMainLooper()).postDelayed({
                     viewModel.loginUser(email, password)
-                    resetStatusBarColor()
                 }, 2000)
             }
         }
@@ -101,6 +100,7 @@ class SignInFragment : Fragment() {
             if (response.isSuccessful) {
                 Toast.makeText(requireContext(), "Login Berhasil!", Toast.LENGTH_LONG).show()
                 findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
+                resetStatusBarColor()
             } else {
                 Toast.makeText(
                     requireContext(),
