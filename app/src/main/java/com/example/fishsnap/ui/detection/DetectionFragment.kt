@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,8 @@ import com.example.fishsnap.ui.ViewModelFactory
 import com.example.fishsnap.utils.FishDetectionModel
 import com.example.fishsnap.utils.getImageUri
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.SlideDistanceProvider
 import com.yalantis.ucrop.UCrop
 import jp.wasabeef.glide.transformations.BlurTransformation
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -104,6 +107,14 @@ class DetectionFragment : Fragment() {
             .into(binding.previewImageView)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val fadeThrough = MaterialFadeThrough().apply {
+            duration = 300L
+        }
+        enterTransition = fadeThrough
+        exitTransition = fadeThrough
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

@@ -3,6 +3,7 @@ package com.example.fishsnap.ui.home
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,6 +22,8 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.HeroCarouselStrategy
+import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.SlideDistanceProvider
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -41,6 +44,15 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val fadeThrough = MaterialFadeThrough().apply {
+            duration = 300L
+        }
+        enterTransition = fadeThrough
+        exitTransition = fadeThrough
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
