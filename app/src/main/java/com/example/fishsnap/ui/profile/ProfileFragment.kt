@@ -82,9 +82,6 @@ class ProfileFragment : Fragment() {
             .setCancelable(true)
             .create()
 
-        "Logout".also { binding.tvTitle.text = it }
-        "Anda yakin ingin keluar?".also { binding.tvMessage.text = it }
-
         binding.btnNo.setOnClickListener {
             dialog.dismiss()
         }
