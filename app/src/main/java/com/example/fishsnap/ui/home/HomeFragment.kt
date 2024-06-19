@@ -9,7 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -22,6 +25,7 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.CarouselSnapHelper
 import com.google.android.material.carousel.HeroCarouselStrategy
+import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.SlideDistanceProvider
 import com.google.gson.Gson
@@ -51,8 +55,8 @@ class HomeFragment : Fragment() {
         val fadeThrough = MaterialFadeThrough().apply {
             duration = 300L
         }
+        exitTransition = Hold()
         enterTransition = fadeThrough
-        exitTransition = fadeThrough
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -129,11 +133,16 @@ class HomeFragment : Fragment() {
         val carouselLayoutManager = CarouselLayoutManager(HeroCarouselStrategy())
         carouselRecyclerView.layoutManager = carouselLayoutManager
         CarouselSnapHelper().attachToRecyclerView(carouselRecyclerView)
-        val carouselItem = getCarouselItems()
-        carouselRecyclerView.adapter = CarouselAdapter(carouselItem) { carouselItems ->
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailCarouselFragment(carouselItems)
-            findNavController().navigate(action)
+        val itemClickListener: (View, CarouselItem) -> Unit = { imageView, item ->
+            val extras = FragmentNavigatorExtras(
+                imageView to "shared_element_image${item}"
+            )
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailCarouselFragment(item)
+            findNavController().navigate(action, extras)
         }
+
+        val adapter = CarouselAdapter(getCarouselItems(), itemClickListener)
+        carouselRecyclerView.adapter = adapter
     }
 
     private fun getCarouselItems(): List<CarouselItem> {

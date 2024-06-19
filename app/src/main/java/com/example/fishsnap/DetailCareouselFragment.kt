@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.StyleSpan
+import android.transition.TransitionInflater
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -17,11 +20,13 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.fishsnap.data.dummy.CarouselItem
 import com.example.fishsnap.data.dummy.ItemDetail
 import com.example.fishsnap.databinding.FragmentDetailCarouselBinding
+import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialElevationScale
 
 class DetailCarouselFragment : Fragment() {
     private var _binding: FragmentDetailCarouselBinding? = null
     private val binding get() = _binding!!
-
+    private val args: DetailCarouselFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,17 +36,24 @@ class DetailCarouselFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = MaterialContainerTransform().apply {
+            drawingViewId = R.id.nav_host
+            duration = 800L
+            scrimColor = resources.getColor(R.color.transparent, null)
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        ViewCompat.setTransitionName(binding.ivImage, "shared_element_image${args.carouselItem}")
+
         binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigateUp()
         }
 
-        arguments?.let {
-            val item = DetailCarouselFragmentArgs.fromBundle(it).carouselItem
-            displayItemDetails(item)
-        }
+        displayItemDetails(args.carouselItem)
     }
 
     private fun displayItemDetails(item: CarouselItem) {

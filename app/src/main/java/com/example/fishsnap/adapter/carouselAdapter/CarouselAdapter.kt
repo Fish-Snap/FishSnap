@@ -1,14 +1,17 @@
 package com.example.fishsnap.adapter.carouselAdapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.fishsnap.data.dummy.CarouselItem
 import com.example.fishsnap.databinding.ListFishBinding
 
-class CarouselAdapter(private val items: List<CarouselItem>,  private val onItemClick: (CarouselItem) -> Unit) : RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
+class CarouselAdapter(private val items: List<CarouselItem>,  private val  onItemClick: (View, CarouselItem) -> Unit) : RecyclerView.Adapter<CarouselAdapter.CarouselViewHolder>() {
 
     inner class CarouselViewHolder(private val binding: ListFishBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -19,7 +22,8 @@ class CarouselAdapter(private val items: List<CarouselItem>,  private val onItem
                     .transform(RoundedCorners(8)) // Apply rounded corners transformation
                     .into(carouselImageView)
                 carouselTextView.text = item.title// Update text based on position
-                root.setOnClickListener { onItemClick(item) }
+                ViewCompat.setTransitionName(carouselImageView, "shared_element_image${item}")
+                root.setOnClickListener { onItemClick(carouselImageView, item) }
             }
         }
     }
