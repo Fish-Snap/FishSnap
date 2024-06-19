@@ -53,9 +53,8 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val fadeThrough = MaterialFadeThrough().apply {
-            duration = 300L
+            duration = 400L
         }
-        exitTransition = Hold()
         enterTransition = fadeThrough
     }
 

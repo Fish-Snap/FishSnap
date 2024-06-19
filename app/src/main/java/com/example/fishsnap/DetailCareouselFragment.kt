@@ -20,6 +20,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.fishsnap.data.dummy.CarouselItem
 import com.example.fishsnap.data.dummy.ItemDetail
 import com.example.fishsnap.databinding.FragmentDetailCarouselBinding
+import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
 
@@ -38,12 +39,14 @@ class DetailCarouselFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sharedElementEnterTransition = MaterialContainerTransform().apply {
-            drawingViewId = R.id.nav_host
-            duration = 800L
-            scrimColor = resources.getColor(R.color.transparent, null)
-        }
+        sharedElementEnterTransition = MaterialContainerTransform()
+            .apply {
+                duration = 300L
+                scrimColor = resources.getColor(R.color.transparent, null)
+            }
+        exitTransition = Hold()
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
